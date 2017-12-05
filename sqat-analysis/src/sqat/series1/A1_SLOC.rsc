@@ -75,8 +75,8 @@ tuple[SLOC result, loc biggestFile, int biggestFileSize, int size] iterateSloc(l
 	for (f <- files(project), f.extension == "java") {
 		lines = readFileLines(f);
 		lines = removeWhiteSpaces(lines);
+		lines = removeMultiLineComments(lines);
 		lines = removeOneLineComments(lines);
-		lines = removeComments(lines);
 		int amountOfLines = size(lines);
 		if(biggestFileSize < amountOfLines){
 			biggestFileSize = amountOfLines;
