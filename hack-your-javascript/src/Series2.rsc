@@ -28,8 +28,13 @@ keyword Keywords = "swap" | "test" | "foreach";
  * 1. Swap: "swap" Id "," Id ";"
  */
   
-Statement desugar((Statement)`swap <Id x>, <Id y>;`)
-  = /* you should replace this */ dummyStat();
+Statement desugar((Statement)`swap <Id x>, <Id y>;`){
+	return (Statement) `(function() {
+		'	var tmp = <Id x>;
+		'	<Id x> = <Id y>;
+		'	<Id y> = tmp;
+		'})();`;
+}
 
 test bool testSwap()
   = desugar((Statement)`swap x, y;`)

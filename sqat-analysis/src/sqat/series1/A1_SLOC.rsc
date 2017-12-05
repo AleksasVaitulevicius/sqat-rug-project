@@ -4,6 +4,7 @@ import IO;
 import ParseTree;
 import String;
 import util::FileSystem;
+import List;
 import sqat::series1::Comments;
 
 /* 
@@ -38,8 +39,60 @@ Bonus:
 alias SLOC = map[loc file, int sloc];
 
 SLOC sloc(loc project) {
-  SLOC result = ();
-  // implement here
-  return result;
+  	SLOC result = ();
+  	loc biggestFile = |project://s|;
+  	int biggestFileSize = 0;
+  	
+  	SRC = iterateSloc(project + "src" + "main");
+  	TEST = iterateSloc(project + "src" + "test");
+  	
+  	result = SRC.result + TEST.result;
+  	projectSize = SRC.size + TEST.size;
+  	ratio = SRC.size / TEST.size;
+  	
+  	if(SRC.biggestFileSize > TEST.biggestFileSize){
+  		biggestFile = SRC.biggestFile;
+  		biggestFileSize = SRC.biggestFileSize;
+	}
+	else{
+		biggestFile = TEST.biggestFile;
+  		biggestFileSize = TEST.biggestFileSize;
+	}
+  	
+	println("Size of project=<projectSize> lines");
+	println("Biggest file=<biggestFile>");
+	println("Size of biggest file=<biggestFileSize> lines");
+	println("Ratio between src code and test code=<ratio>:1");
+	return result;
 }             
-             
+
+tuple[SLOC result, loc biggestFile, int biggestFileSize, int size] iterateSloc(loc project){
+  	SLOC result = ();
+  	int sizeOfProject = 0;
+  	int biggestFileSize = 0;
+  	loc biggestFile = |project://s|;
+  	
+	for (f <- files(project), f.extension == "java") {
+		lines = readFileLines(f);
+		lines = removeWhiteSpaces(lines);
+		lines = removeOneLineComments(lines);
+		lines = removeComments(lines);
+		int amountOfLines = size(lines);
+		if(biggestFileSize < amountOfLines){
+			biggestFileSize = amountOfLines;
+			biggestFile = f;
+		}
+		result[f] = amountOfLines;
+		sizeOfProject = sizeOfProject + amountOfLines;
+	}
+	
+	return <result, biggestFile, biggestFileSize, sizeOfProject>;
+}
+
+list[str] removeWhiteSpaces(list[str] lines){
+	lines = [ replaceAll(replaceAll(line, "\t", ""), " ", "") | str line <- lines];
+	lines = [ line | str line <- lines, line != ""];
+	return lines;
+}
+
+test bool testremoveWhiteSpaces() = removeWhiteSpaces(["a", "", "		", "b", " "]) == ["a", "b"];
