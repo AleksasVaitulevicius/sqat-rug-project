@@ -39,32 +39,26 @@ Bonus:
 alias SLOC = map[loc file, int sloc];
 
 SLOC sloc(loc project) {
-  	SLOC result = ();
-  	loc biggestFile = |project://s|;
-  	int biggestFileSize = 0;
-  	
   	SRC = iterateSloc(project + "src" + "main");
   	TEST = iterateSloc(project + "src" + "test");
   	
-  	result = SRC.result + TEST.result;
   	projectSize = SRC.size + TEST.size;
   	ratio = SRC.size / TEST.size;
   	
-  	if(SRC.biggestFileSize > TEST.biggestFileSize){
-  		biggestFile = SRC.biggestFile;
-  		biggestFileSize = SRC.biggestFileSize;
-	}
-	else{
-		biggestFile = TEST.biggestFile;
-  		biggestFileSize = TEST.biggestFileSize;
-	}
+  	if(SRC.biggestFileSize > TEST.biggestFileSize)
+  		printAnswersOfAssignmentQuestions(projectSize, ratio, SRC.biggestFile, SRC.biggestFileSize);
+	else
+  		printAnswersOfAssignmentQuestions(projectSize, ratio, TEST.biggestFile, TEST.biggestFileSize);
   	
+	return SRC.result + TEST.result;
+}             
+
+void printAnswersOfAssignmentQuestions(int projectSize, int ratio, loc biggestFile, int biggestFileSize){
 	println("Size of project=<projectSize> lines");
 	println("Biggest file=<biggestFile>");
 	println("Size of biggest file=<biggestFileSize> lines");
 	println("Ratio between src code and test code=<ratio>:1");
-	return result;
-}             
+}
 
 tuple[SLOC result, loc biggestFile, int biggestFileSize, int size] iterateSloc(loc project){
   	SLOC result = ();
