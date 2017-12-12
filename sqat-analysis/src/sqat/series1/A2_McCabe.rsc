@@ -1,7 +1,9 @@
 module sqat::series1::A2_McCabe
 
 import lang::java::jdt::m3::AST;
+import lang::java::m3::AST;
 import IO;
+import util::ResourceMarkers;
 
 /*
 
@@ -34,24 +36,68 @@ Bonus
 - write visualization using vis::Figure and vis::Render to render a histogram.
 
 */
-
 set[Declaration] jpacmanASTs() = createAstsFromEclipseProject(|project://jpacman-framework|, true); 
 
 alias CC = rel[loc method, int cc];
 
 CC cc(set[Declaration] decls) {
-  CC result = {};
-  
-  // to be done
-  
-  return result;
+	CC result = {};
+	
+	visit(decls){
+		case m:\method(_, _, _, _, Statement impl): {
+			result = result + {<m.src, mcCabe(impl)>};
+			}
+		case m:\constructor(_, _, _, _, Statement impl):
+			result = result + {<m.src, mcCabe(impl)>};
+	}
+	
+	return result;
 }
 
 alias CCDist = map[int cc, int freq];
 
 CCDist ccDist(CC cc) {
-  // to be done
+	complexities = cc.cc;
+	transformIntoDist();
+	return {};
 }
 
+//CCDist transformIntoDist(set[int]){
+//
+//}
 
+int mcCabe(Statement impl) {
+	int result = 1;
+	visit(impl){
+		case \if(Expression condition, Statement thenBranch, Statement elseBranch): 
+			result = result + countEdgesOfNode(condition);
+		case \if(Expression condition, Statement thenBranch):
+			result = result + countEdgesOfNode(condition);
+		case \while(Expression condition, Statement body):
+			result = result + countEdgesOfNode(condition);
+		case \do(Statement body, Expression condition):
+			result = result + countEdgesOfNode(condition);
+		case \for(_, Expression condition, _, Statement body):{
+			result = result + countEdgesOfNode(condition);
+			println("DEBUG <result>");
+		}
+		case \foreach(_, _, Statement body): result = result + mcCabe(body);
+		case \for(_, _, Statement body): result = result + mcCabe(body);
+	}
+	return result;
+}
 
+int countEdgesOfNode(Expression condition){
+	int result = 1;
+	
+	visit(condition){
+		case infix(_, "&&", _): result = result + 1;
+		case infix(_, "||", _): result = result + 1;
+	}
+	
+	return result;
+}
+
+test bool testcc()
+	= cc(createAstsFromEclipseProject(|project://sqat-analysis|, true))
+		== {<|project://sqat-analysis/src/sqat/series1/McCabeTest.java|(53,84,<4,1>,<9,2>), 3>};
