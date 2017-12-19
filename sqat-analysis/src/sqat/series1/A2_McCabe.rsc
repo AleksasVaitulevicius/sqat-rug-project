@@ -7,10 +7,6 @@ import lang::java::jdt::m3::AST;
 import lang::java::m3::AST;
 import IO;
 
-import Set;
-import List;
-import ListRelation;
-
 /*
 
 Construct a distribution of method cylcomatic complexity. 
@@ -127,15 +123,21 @@ tuple[loc, int] max(CC cc){
 	return res;
 }
 
-list[real] findCorrelation(CC cc, SLOC sloc){
-	ccList = [<complexity> | <_, int complexity> <- cc];
-	slocList = [sloc[file] | file <- sloc];
+num findCorrelation(CC cc, SLOC sloc){
+	lrel[num cc, num sloc] forCalculations = [];
 	
-	println("DEBUG1");
-	forCal = ccList join slocList;
-	println("DEBUG2");
+	for(file <- sloc){
+		num lines = sloc[file];
+		num fileComplexity = 0; 
+		
+		for(complexity <- cc){
+			if(complexity.method.uri == file.uri)
+				fileComplexity = fileComplexity + complexity.cc;
+		}
+		forCalculations = forCalculations + <fileComplexity, lines>;
+	}
 	
-	return PearsonsCorrelationPValues(forCal);
+	return SpearmansCorrelation(forCalculations);
 }
 
 test bool testcc()
