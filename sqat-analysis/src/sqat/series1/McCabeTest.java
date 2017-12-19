@@ -1,13 +1,11 @@
 package sqat.series1;
 
 public class McCabeTest {
-	public int test1() {
-		for (int x = 0; x < width; x++) {
+	public int test1(int width, int height) {
+		int a = 0;
+		for (int x = 0; x < width || x < height; x++) {
+			a++;
 		}
-		for (int y = 0; y < height; y++) {
-			char c = map[x][y];
-			addSquare(grid, ghosts, startPositions, x, y, c);
-		}
-
+		return a;
 	}
 }

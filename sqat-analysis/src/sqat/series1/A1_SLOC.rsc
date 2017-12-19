@@ -38,7 +38,7 @@ Bonus:
 
 alias SLOC = map[loc file, int sloc];
 
-SLOC sloc(loc project) {
+SLOC sloc(loc project, int threshold = 66000) {
   	SRC = iterateSloc(project + "src" + "main");
   	TEST = iterateSloc(project + "src" + "test");
   	
@@ -46,18 +46,22 @@ SLOC sloc(loc project) {
   	ratio = SRC.size / TEST.size;
   	
   	if(SRC.biggestFileSize > TEST.biggestFileSize)
-  		printAnswersOfAssignmentQuestions(projectSize, ratio, SRC.biggestFile, SRC.biggestFileSize);
+  		printAnswersOfAssignmentQuestions(projectSize, ratio, SRC.biggestFile, SRC.biggestFileSize, threshold);
 	else
-  		printAnswersOfAssignmentQuestions(projectSize, ratio, TEST.biggestFile, TEST.biggestFileSize);
+  		printAnswersOfAssignmentQuestions(projectSize, ratio, TEST.biggestFile, TEST.biggestFileSize, threshold);
   	
 	return SRC.result + TEST.result;
 }             
 
-void printAnswersOfAssignmentQuestions(int projectSize, int ratio, loc biggestFile, int biggestFileSize){
+void printAnswersOfAssignmentQuestions(int projectSize, int ratio, loc biggestFile, int biggestFileSize, int threshold){
 	println("Size of project=<projectSize> lines");
 	println("Biggest file=<biggestFile>");
 	println("Size of biggest file=<biggestFileSize> lines");
 	println("Ratio between src code and test code=<ratio>:1");
+	if(projectSize < threshold)
+		println("JPacman-framework is not large according to SIG maintainability.");
+	else
+		println("JPacman-framework is large according to SIG maintainability.");
 }
 
 tuple[SLOC result, loc biggestFile, int biggestFileSize, int size] iterateSloc(loc project){
