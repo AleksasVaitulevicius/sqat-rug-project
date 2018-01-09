@@ -2,7 +2,12 @@ module sqat::series1::A3_CheckStyle
 
 import Java17ish;
 import Message;
+import ParseTree;
 
+import util::ResourceMarkers;
+
+import util::FileSystem;
+import IO;
 /*
 
 Assignment: detect style violations in Java source code.
@@ -42,10 +47,26 @@ Bonus:
 */
 
 set[Message] checkStyle(loc project) {
-  set[Message] result = {};
-  
-  // to be done
-  // implement each check in a separate function called here. 
-  
-  return result;
+  	set[Message] result = {};
+  	
+  	return result;
 }
+
+set[Message] constantName(loc project, str pattern){
+	tree = parseJava(project);
+	visit(tree){
+		case theMethod:(MethodDec)`<MethodDecHead m> <MethodBody body>`: println(theMethod);
+		case expr:(FieldDec)`<FieldMod _> static final <Type _> <VarDecId name>;`: println("<expr>, <name>");
+		case expr:(FieldDec)`<FieldMod _> final static <Type _> <VarDecId name>;`: println("<expr>, <name>");
+		case expr:(LocalVarDec)`final <Type _> <VarDecId name>`: println("<expr>, <name>");
+		case expr:(FieldDec)`<FieldMod _> static final <Type _> <VarDecId name> = <VarInit _>;`: println("<expr@\loc>, <name>");
+		case expr:(FieldDec)`<FieldMod _> final static <Type _> <VarDecId name> = <VarInit _>;`: println("<expr@\loc>, <name>");
+		case expr:(LocalVarDec)`final <Type _> <VarDecId name> = <VarInit _>`: println("<expr@\loc>, <name>");
+	}
+	
+	return {warning("Hello world", |project://unknown|)};
+}
+
+test bool testconstantName() 
+	= constantName(|project://jpacman-framework/src/main/java/nl/tudelft/jpacman/npc/ghost/Inky.java|, "") 
+		== {warning("Hello world", |project://unknown|)};
