@@ -1,7 +1,17 @@
 module sqat::series2::A1a_StatCov
 
 import lang::java::jdt::m3::Core;
+import analysis::m3::Core;
+import util::Math;
 
+import IO;
+import ParseTree;
+import String;
+import List;
+import Set;
+
+import Boolean;
+import Relation;
 /*
 
 Implement static code coverage metrics by Alves & Visser 
@@ -44,6 +54,130 @@ Questions:
 
 */
 
+data Label = label(str typ);
 
-M3 jpacmanM3() = createM3FromEclipseProject(|project://jpacman-framework|);
+data Node = nod(str typ, loc name, bool tes);
+
+alias G = tuple [Node from, Label edge, Node to];
+
+alias GC = rel [Node from, Label edge, Node to];
+
+
+
+set [Node] solveGraph(GC gc) {
+	set [Node] coveredMethods = {};
+	for(G g <- gc) {
+		GC solv = {};
+		if(g.from.tes && g.from.typ == "method") {
+			solv = domainR(gc, {g.from});
+		}
+		solve(coveredMethods) {
+			coveredMethods += solv.to;
+			solv = domainR(gc, solv.to);
+		}
+	}
+	println(size(coveredMethods));
+	return coveredMethods;
+}
+
+set[Node] getNonTestMethods (GC gc) {
+	set [Node] totalMethods = {};
+	for(G g <- gc) {
+		if(g.from.typ == "method" && !g.from.tes) {
+		   totalMethods += g.from;
+		}
+		if(g.to.typ == "method" && !g.from.tes) {
+		   totalMethods += g.to;
+		}
+	}
+	
+	println(totalMethods);
+	return totalMethods;
+}
+
+void makeAndSolve() {
+	M3 m3 = createM3FromEclipseProject(|project://jpacman-framework|);
+	
+    GC gc  = {};
+    
+    
+    rel [loc from, loc to] testConnections = getTestConnections(m3);
+    rel [loc from, loc to] methodConnections = rangeX(m3.methodInvocation, testConnections.to) + rangeX(m3.containment, testConnections.to);
+    
+    gc = makeGraphPart(gc, methodConnections, false);
+    gc += makeGraphPart(gc, testConnections, true);
+    set[Node] covered= solveGraph(gc);
+    set[Node] allNonTestMethods =  getNonTestMethods(gc);
+    
+    println("Covered methods: <size(allNonTestMethods - covered)>");
+
+    println("Coverage: <size(allNonTestMethods - covered)> of <size(allNonTestMethods)>");
+    //println(covered);
+    println("Methods not covered <allNonTestMethods - covered>");
+    
+    
+    
+	//return 	/*rel [loc dec, loc ann] tests =*/ rangeR(annotations, {|java+interface:///org/junit/Test|});
+	//return coveredMethods;
+}
+
+GC makeGraphPart(GC gc, rel[loc from, loc to] methodConnections, bool tes) {
+	for(methodConnection <- methodConnections) {
+   		if(methodConnection.from.scheme == "java+package") {
+   	       	if(methodConnection.to.scheme == "java+compilationUnit") {
+   	       	  	for(tuple [loc from, loc to] c <- domainR(methodConnections, {methodConnection.to})) {
+   	       	  		Node from = nod("package", methodConnection.from, tes);
+   	       	    	Node to = nod("class", c.to, tes);
+   	       	    	Label l = label("DT");
+   	       	    	gc += <from, l ,to>;
+   	       		}
+   	     	}
+   	  	}
+   	  	if(methodConnection.from.scheme == "java+class" ||  methodConnection.from.scheme == "java+interface" || methodConnection.from.scheme == "java+enum") {
+   	  		if(methodConnection.to.scheme == "java+method" || methodConnection.to.scheme == "java+constructor") {
+   	  			if(methodConnection.to.path[0..4] == "/nl/") {
+   	  				Node from = nod("class", methodConnection.from, tes);
+   	  	    		Node to = nod("method", methodConnection.to, tes);
+   	  	   	   	 	Label l = label("DM");
+   	  	    		gc += <from, l ,to>;
+   	  	    	}
+   	  		}
+   	  		
+   	  	}
+   	  	if(methodConnection.from.scheme == "java+method" || methodConnection.from.scheme == "java+constructor") {
+   	    	if(methodConnection.to.scheme == "java+method" || methodConnection.to.scheme == "java+constructor") {
+   	    		if(methodConnection.to.path[0..4] == "/nl/") {
+   	    			Node from = nod("method", methodConnection.from, tes);
+   	  	   		    Node to = nod("method", methodConnection.to, false);
+   	  	    		Label l = label("DC");
+   	  	    		gc += <from, l ,to>;
+   	  	    	} 
+   	    	}	
+		}
+	}
+	return gc;
+}
+
+
+
+rel [loc from, loc to] getTestConnections (M3 m3) {
+	rel [loc declaration, loc annotation] annotations = m3.annotations;
+    rel [loc dec, loc ann] tests = rangeR (annotations, {|java+interface:///org/junit/Test|} + {|java+interface:///org/junit/Before|} + {|java+interface:///org/junit/After|});
+	rel [loc from, loc to] contained = m3.containment;
+    rel [loc from, loc to] containedTestMethods = rangeR(contained, tests.dec);
+    rel [loc from, loc to] containedTestClasses = rangeR(contained, containedTestMethods.from);
+    rel [loc from, loc to] containedCompilationUnits = rangeR(contained, containedTestClasses.from);
+    rel [loc from, loc to] containedTests = rangeR (domainR(contained, containedTestMethods.from + containedTestClasses.from + containedCompilationUnits.from),
+    													containedTestMethods.to + containedTestClasses.to + containedCompilationUnits.to);
+    rel [loc from, loc to] testConnections = containedTests + domainR(m3.methodInvocation, containedTests.to);
+    return testConnections;
+}
+
+
+
+
+
+
+
+
 
