@@ -76,7 +76,6 @@ set [Node] solveGraph(GC gc) {
 			solv = domainR(gc, solv.to);
 		}
 	}
-	println(size(coveredMethods));
 	return coveredMethods;
 }
 
@@ -86,12 +85,11 @@ set[Node] getNonTestMethods (GC gc) {
 		if(g.from.typ == "method" && !g.from.tes) {
 		   totalMethods += g.from;
 		}
-		if(g.to.typ == "method" && !g.from.tes) {
+		if(g.to.typ == "method" && !g.to.tes) {
 		   totalMethods += g.to;
 		}
 	}
 	
-	println(totalMethods);
 	return totalMethods;
 }
 
@@ -109,16 +107,10 @@ void makeAndSolve() {
     set[Node] covered= solveGraph(gc);
     set[Node] allNonTestMethods =  getNonTestMethods(gc);
     
-    println("Covered methods: <size(allNonTestMethods - covered)>");
+    println("Covered methods: <size(allNonTestMethods & covered)>");
 
-    println("Coverage: <size(allNonTestMethods - covered)> of <size(allNonTestMethods)>");
-    //println(covered);
-    println("Methods not covered <allNonTestMethods - covered>");
-    
-    
-    
-	//return 	/*rel [loc dec, loc ann] tests =*/ rangeR(annotations, {|java+interface:///org/junit/Test|});
-	//return coveredMethods;
+    println("Coverage: <size(allNonTestMethods & covered)> of <size(allNonTestMethods)>");
+    //println("Methods not covered <allNonTestMethods - covered>");
 }
 
 GC makeGraphPart(GC gc, rel[loc from, loc to] methodConnections, bool tes) {
@@ -161,15 +153,16 @@ GC makeGraphPart(GC gc, rel[loc from, loc to] methodConnections, bool tes) {
 
 
 rel [loc from, loc to] getTestConnections (M3 m3) {
-	rel [loc declaration, loc annotation] annotations = m3.annotations;
-    rel [loc dec, loc ann] tests = rangeR (annotations, {|java+interface:///org/junit/Test|} + {|java+interface:///org/junit/Before|} + {|java+interface:///org/junit/After|});
+	annotations = m3.annotations;
+    rel [loc dec, loc ann] tests = rangeR (annotations, {|java+interface:///org/junit/Test|} + {|java+interface:///org/junit/Before|} + {|java+interface:///org/junit/After|} + {|java+interface:///org/junit/When|});
 	rel [loc from, loc to] contained = m3.containment;
     rel [loc from, loc to] containedTestMethods = rangeR(contained, tests.dec);
     rel [loc from, loc to] containedTestClasses = rangeR(contained, containedTestMethods.from);
     rel [loc from, loc to] containedCompilationUnits = rangeR(contained, containedTestClasses.from);
+    println(containedCompilationUnits);
     rel [loc from, loc to] containedTests = rangeR (domainR(contained, containedTestMethods.from + containedTestClasses.from + containedCompilationUnits.from),
     													containedTestMethods.to + containedTestClasses.to + containedCompilationUnits.to);
-    rel [loc from, loc to] testConnections = containedTests + domainR(m3.methodInvocation, containedTests.to);
+    testConnections = containedTests + domainR(m3.methodInvocation, containedTests.to);
     return testConnections;
 }
 
