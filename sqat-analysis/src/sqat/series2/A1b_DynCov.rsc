@@ -3,6 +3,8 @@ module sqat::series2::A1b_DynCov
 import Java17ish;
 import ParseTree;
 import util::FileSystem;
+import IO;
+import String;
 
 /*
 
@@ -50,6 +52,22 @@ void methodCoverage(loc project) {
 
 void lineCoverage(loc project) {
   // to be done
+}
+
+void insertMethod(loc l, str class, str method) {
+	l.authority = "jpacman-instrumented";
+}
+
+void insertStatements(loc project, str class) {
+	tree = parseJava(project);
+	
+	visit(tree) {
+	   case theMethod:(MethodDec)`<MethodDecHead m> <MethodBody body>`: insertMethod(body@\loc, class, m); 
+
+	   
+	   //loc l = body
+	  // Block put(b:(Block)`{}`) = (Block) {<BlockStm s>}
+	}
 }
 
 
