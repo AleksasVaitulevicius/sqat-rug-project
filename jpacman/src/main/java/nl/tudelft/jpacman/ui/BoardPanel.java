@@ -52,7 +52,7 @@ class BoardPanel extends JPanel {
 		this.game = game;
 
 		Board board = game.getLevel().getBoard();
-
+		
 		int w = board.getWidth() * SQUARE_SIZE;
 		int h = board.getHeight() * SQUARE_SIZE;
 

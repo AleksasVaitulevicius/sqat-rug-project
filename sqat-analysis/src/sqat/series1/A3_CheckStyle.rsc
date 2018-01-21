@@ -46,27 +46,66 @@ Bonus:
 
 */
 
+void main(loc project) {
+  addMessageMarkers(checkStyle(project));
+}
+
 set[Message] checkStyle(loc project) {
-  	set[Message] result = {};
-  	
-  	return result;
+	ms = {};
+	for (loc l <- files(project), l.extension == "java") {
+		ms += constantName(parse(#start[CompilationUnit], l, allowAmbiguity=true));
+		ms += EmptyStatement(parse(#start[CompilationUnit], l, allowAmbiguity=true));
+		ms += AvoidInlineConditionals(parse(#start[CompilationUnit], l, allowAmbiguity=true));
+	}  
+	return ms;
 }
 
-set[Message] constantName(loc project, str pattern){
-	tree = parseJava(project);
-	visit(tree){
-		case theMethod:(MethodDec)`<MethodDecHead m> <MethodBody body>`: println(theMethod);
-		case expr:(FieldDec)`<FieldMod _> static final <Type _> <VarDecId name>;`: println("<expr>, <name>");
-		case expr:(FieldDec)`<FieldMod _> final static <Type _> <VarDecId name>;`: println("<expr>, <name>");
-		case expr:(LocalVarDec)`final <Type _> <VarDecId name>`: println("<expr>, <name>");
-		case expr:(FieldDec)`<FieldMod _> static final <Type _> <VarDecId name> = <VarInit _>;`: println("<expr@\loc>, <name>");
-		case expr:(FieldDec)`<FieldMod _> final static <Type _> <VarDecId name> = <VarInit _>;`: println("<expr@\loc>, <name>");
-		case expr:(LocalVarDec)`final <Type _> <VarDecId name> = <VarInit _>`: println("<expr@\loc>, <name>");
-	}
+bool isCorrectConstant(str name){
+	return /^log(ger)?|[A-Z][A-Z0-9]*(_[A-Z0-9]+)*$/ := "<name>";
+}
+
+set[Message] AvoidInlineConditionals(start[CompilationUnit] tree){
+	set[Message] result = {};
 	
-	return {warning("Hello world", |project://unknown|)};
+	visit(tree){
+		case expr:(Expr cond)`<Expr _> <CondMid _> <Expr _>`:
+			result += {warning("Inline condition", expr@\loc)};
+	}
+	return result;
 }
 
-test bool testconstantName() 
-	= constantName(|project://jpacman-framework/src/main/java/nl/tudelft/jpacman/npc/ghost/Inky.java|, "") 
-		== {warning("Hello world", |project://unknown|)};
+set[Message] EmptyStatement(start[CompilationUnit] tree){
+	set[Message] result = {};
+	
+	visit(tree){
+		case expr:(Stm empty)`;`:
+			result += {warning("Empty statement", expr@\loc)};
+	}
+	return result;
+}
+
+set[Message] constantName(start[CompilationUnit] tree){
+	set[Message] result = {};
+	
+	visit(tree){
+		case expr:(FieldDec)`<FieldMod _> static final <Type _> <VarDecId name>;`:
+			if (!isCorrectConstant("<name>"))
+				result += {warning("Bad constant naming:<name>", expr@\loc)};
+		case expr:(FieldDec)`<FieldMod _> final static <Type _> <VarDecId name>;`:
+			if (!isCorrectConstant("<name>"))
+				result += {warning("Bad constant naming:<name>", expr@\loc)};
+		case expr:(LocalVarDec)`final <Type _> <VarDecId name>`:
+			if (!isCorrectConstant("<name>"))
+				result += {warning("Bad constant naming:<name>", expr@\loc)};
+		case expr:(FieldDec)`<FieldMod _> static final <Type _> <VarDecId name> = <VarInit _>;`:
+			if (!isCorrectConstant("<name>"))
+				result += {warning("Bad constant naming:<name>", expr@\loc)};
+		case expr:(FieldDec)`<FieldMod _> final static <Type _> <VarDecId name> = <VarInit _>;`:
+			if (!isCorrectConstant("<name>"))
+				result += {warning("Bad constant naming:<name>", expr@\loc)};
+		case expr:(LocalVarDec)`final <Type _> <VarDecId name> = <VarInit _>`:
+			if (!isCorrectConstant("<name>"))
+				result += {warning("Bad constant naming:<name>", expr@\loc)};
+	}
+	return result;
+}
