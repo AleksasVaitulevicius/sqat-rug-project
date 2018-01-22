@@ -12,7 +12,7 @@ import com.google.common.collect.ImmutableList;
  * 
  * @author Jeroen Roosen 
  */
-public class SinglePlayerGame extends Game {
+public class SinglePlayerGame extends Game{
 
 	/**
 	 * The player of this game.

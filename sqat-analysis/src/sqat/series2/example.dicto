@@ -2,3 +2,11 @@
 foo.Foo cannot depend bar.Bar
 foo.Foo::init cannot instantiate bar.Bar
 foo cannot import bar
+
+annotations cannot import ui
+board cannot import ui
+game cannot import ui
+level cannot import ui
+npc cannot import ui
+ghost cannot import ui
+sprite cannot import ui
