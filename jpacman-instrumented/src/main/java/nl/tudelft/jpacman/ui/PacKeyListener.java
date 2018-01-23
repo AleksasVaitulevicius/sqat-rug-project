@@ -19,8 +19,8 @@ import java.util.Map; class PacKeyListener implements KeyListener {
 		} Collect.Hit("PacKeyListener.java","keyPressed(KeyEvent e)", "768");}
 
 	@Override
-	public void keyTyped(KeyEvent e) {Collect.Hit("PacKeyListener.java","keyTyped(KeyEvent e)");Collect.Hit("PacKeyListener.java","keyTyped(KeyEvent e)", "4972");}
+	public void keyTyped(KeyEvent e) {Collect.Hit("PacKeyListener.java","keyTyped(KeyEvent e)");Collect.Hit("PacKeyListener.java","keyTyped(KeyEvent e)", "4828");}
 	
 	@Override
-	public void keyReleased(KeyEvent e) {Collect.Hit("PacKeyListener.java","keyReleased(KeyEvent e)");Collect.Hit("PacKeyListener.java","keyReleased(KeyEvent e)", "4972");}
+	public void keyReleased(KeyEvent e) {Collect.Hit("PacKeyListener.java","keyReleased(KeyEvent e)");Collect.Hit("PacKeyListener.java","keyReleased(KeyEvent e)", "4828");}
 }

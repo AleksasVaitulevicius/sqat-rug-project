@@ -103,7 +103,7 @@ import nl.tudelft.jpacman.sprite.Sprite; public class LevelFactory {
 		 * @param ghostSprite
 		 *            The sprite for the ghost.
 		 */
-		RandomGhost(Map<Direction, Sprite> ghostSprite) {super(ghostSprite, (int) DELAY, 0);Collect.Hit("LevelFactory.java","RandomGhost(Map<Direction, Sprite> ghostSprite)");Collect.Hit("LevelFactory.java","RandomGhost(Map<Direction, Sprite> ghostSprite)", "4972");}
+		RandomGhost(Map<Direction, Sprite> ghostSprite) {super(ghostSprite, (int) DELAY, 0);Collect.Hit("LevelFactory.java","RandomGhost(Map<Direction, Sprite> ghostSprite)");Collect.Hit("LevelFactory.java","RandomGhost(Map<Direction, Sprite> ghostSprite)", "4828");}
 
 		@Override
 		public Direction nextMove() {Collect.Hit("LevelFactory.java","nextMove()"); Collect.Hit("LevelFactory.java","nextMove()", "3382");return randomMove() ; }

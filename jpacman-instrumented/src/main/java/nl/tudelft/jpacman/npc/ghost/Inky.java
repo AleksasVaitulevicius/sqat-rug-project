@@ -26,7 +26,7 @@ import nl.tudelft.jpacman.sprite.Sprite; public class Inky extends Ghost {
 	 * @param spriteMap
 	 *            The sprites for this ghost.
 	 */
-	public Inky(Map<Direction, Sprite> spriteMap) {super(spriteMap, MOVE_INTERVAL, INTERVAL_VARIATION);Collect.Hit("Inky.java","Inky(Map<Direction, Sprite> spriteMap)");Collect.Hit("Inky.java","Inky(Map<Direction, Sprite> spriteMap)", "4972");}
+	public Inky(Map<Direction, Sprite> spriteMap) {super(spriteMap, MOVE_INTERVAL, INTERVAL_VARIATION);Collect.Hit("Inky.java","Inky(Map<Direction, Sprite> spriteMap)");Collect.Hit("Inky.java","Inky(Map<Direction, Sprite> spriteMap)", "4828");}
 
 	/**
 	 * {@inheritDoc}

@@ -48,14 +48,6 @@ str method;
 
 str class;
 
-void methodCoverage(loc project) {
-  // to be done
-}
-
-void lineCoverage(loc project) {
-  // to be done
-}
-
 str getMethodName(str m) {
 	m = replaceAll(m , "\t", "");
 	int parLeft = findFirst(m , "(");
@@ -83,7 +75,7 @@ void insertStatements(loc project, str cl) {
 			method = getMethodName(unparse(m));
 	   		BlockStm statement = [BlockStm] "Collect.Hit(\"<class>\",\"<method>\");"; 
 	   		BlockStm* stms2 = putAfterEvery(stms, BlockStm (loc l) {   											
-				BlockStm statement = [BlockStm] "Collect.Hit(\"<class>\",\"<method>\", \"<l.offset/*.begin.line*/>\");"; 
+				BlockStm statement = [BlockStm] "Collect.Hit(\"<class>\",\"<method>\", \"<l.offset>\");"; 
 				return statement;
 	    	});
 	   		MethodBody mb = [MethodBody] "{<statement><stms2>}";
@@ -94,7 +86,7 @@ void insertStatements(loc project, str cl) {
 			method = getMethodName(unparse(c)); 
 	   		BlockStm statement = [BlockStm] "Collect.Hit(\"<class>\",\"<method>\");"; 
 	   		BlockStm* stms2 = putAfterEvery(stms, BlockStm (loc l) {
-				BlockStm statement = [BlockStm] "Collect.Hit(\"<class>\",\"<method>\", \"<l.offset/*.begin.line*/>\");"; 
+				BlockStm statement = [BlockStm] "Collect.Hit(\"<class>\",\"<method>\", \"<l.offset>\");"; 
 				return statement;
 	    	});
 	   		ConstrBody cb = [ConstrBody] "{<co><statement><stms2>}";

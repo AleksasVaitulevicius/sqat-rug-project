@@ -46,7 +46,7 @@ package nl.tudelft.jpacman.sprite;import coverageApi.Collect;import java.awt.Gra
 	 * @param loop
 	 *            Whether or not this sprite should be looping.
 	 */
-	public AnimatedSprite(Sprite[] frames, int delay, boolean loop) {this(frames, delay, loop, false);Collect.Hit("AnimatedSprite.java","AnimatedSprite(Sprite[] frames, int delay, boolean loop)");Collect.Hit("AnimatedSprite.java","AnimatedSprite(Sprite[] frames, int delay, boolean loop)", "4972");}
+	public AnimatedSprite(Sprite[] frames, int delay, boolean loop) {this(frames, delay, loop, false);Collect.Hit("AnimatedSprite.java","AnimatedSprite(Sprite[] frames, int delay, boolean loop)");Collect.Hit("AnimatedSprite.java","AnimatedSprite(Sprite[] frames, int delay, boolean loop)", "4828");}
 
 	/**
 	 * Creates a new animating sprite that will change frames every interval.

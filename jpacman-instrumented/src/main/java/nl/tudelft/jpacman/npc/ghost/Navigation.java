@@ -7,7 +7,7 @@ import nl.tudelft.jpacman.board.Direction;
 import nl.tudelft.jpacman.board.Square;
 import nl.tudelft.jpacman.board.Unit; public final class Navigation {
 
-	private Navigation() {Collect.Hit("Navigation.java","Navigation()");Collect.Hit("Navigation.java","Navigation()", "4972");}
+	private Navigation() {Collect.Hit("Navigation.java","Navigation()");Collect.Hit("Navigation.java","Navigation()", "4828");}
 	
 	/**
 	 * Calculates the shortest path. This is done by BFS. This search ensures
