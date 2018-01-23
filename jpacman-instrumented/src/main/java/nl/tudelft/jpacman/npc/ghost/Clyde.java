@@ -41,7 +41,7 @@ import nl.tudelft.jpacman.sprite.Sprite; public class Clyde extends Ghost {
 	 * @param spriteMap
 	 *            The sprites for this ghost.
 	 */
-	public Clyde(Map<Direction, Sprite> spriteMap) {super(spriteMap, MOVE_INTERVAL, INTERVAL_VARIATION);Collect.Hit("Clyde.java","Clyde(Map<Direction, Sprite> spriteMap)");Collect.Hit("Clyde.java","Clyde(Map<Direction, Sprite> spriteMap)", "5012");}
+	public Clyde(Map<Direction, Sprite> spriteMap) {super(spriteMap, MOVE_INTERVAL, INTERVAL_VARIATION);Collect.Hit("Clyde.java","Clyde(Map<Direction, Sprite> spriteMap)");Collect.Hit("Clyde.java","Clyde(Map<Direction, Sprite> spriteMap)", "4972");}
 
 	/**
 	 * {@inheritDoc}

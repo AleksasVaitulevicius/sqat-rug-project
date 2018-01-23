@@ -1,3 +1,3 @@
-
-nl.tudelft.jpacman.game.SinglePlayerGame can only inherit nl.tudelft.jpacman.game.Game
-
+nl.tudelft.jpacman.game cannot depend nl.tudelft.jpacman.ui
+nl.tudelft.jpacman.game.SinglePlayerGame must inherit nl.tudelft.jpacman.game.Game
+nl.tudelft.jpacman.board can only import nl.tudelft.jpacman.level

@@ -5,7 +5,7 @@ package nl.tudelft.jpacman;import coverageApi.Collect; public class PacmanConfig
 	 * 
 	 * @param message The exception message.
 	 */
-	public PacmanConfigurationException(String message) {super(message);Collect.Hit("PacmanConfigurationException.java","PacmanConfigurationException(String message)");Collect.Hit("PacmanConfigurationException.java","PacmanConfigurationException(String message)", "5012");}
+	public PacmanConfigurationException(String message) {super(message);Collect.Hit("PacmanConfigurationException.java","PacmanConfigurationException(String message)");Collect.Hit("PacmanConfigurationException.java","PacmanConfigurationException(String message)", "4972");}
 
 	/**
 	 * A configuration exception with a root cause and additional explanation.
@@ -13,5 +13,5 @@ package nl.tudelft.jpacman;import coverageApi.Collect; public class PacmanConfig
 	 * @param message The explanation.
 	 * @param cause The root cause.
 	 */
-	public PacmanConfigurationException(String message, Throwable cause) {super(message, cause);Collect.Hit("PacmanConfigurationException.java","PacmanConfigurationException(String message, Throwable cause)");Collect.Hit("PacmanConfigurationException.java","PacmanConfigurationException(String message, Throwable cause)", "5012");}
+	public PacmanConfigurationException(String message, Throwable cause) {super(message, cause);Collect.Hit("PacmanConfigurationException.java","PacmanConfigurationException(String message, Throwable cause)");Collect.Hit("PacmanConfigurationException.java","PacmanConfigurationException(String message, Throwable cause)", "4972");}
 }

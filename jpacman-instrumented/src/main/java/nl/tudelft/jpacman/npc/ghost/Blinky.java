@@ -25,7 +25,7 @@ import nl.tudelft.jpacman.sprite.Sprite; public class Blinky extends Ghost {
 	 */
 	// TODO Blinky should speed up when there are a few pellets left, but he
 	// has no way to find out how many there are.
-	public Blinky(Map<Direction, Sprite> spriteMap) {super(spriteMap, MOVE_INTERVAL, INTERVAL_VARIATION);Collect.Hit("Blinky.java","Blinky(Map<Direction, Sprite> spriteMap)");Collect.Hit("Blinky.java","Blinky(Map<Direction, Sprite> spriteMap)", "5012");}
+	public Blinky(Map<Direction, Sprite> spriteMap) {super(spriteMap, MOVE_INTERVAL, INTERVAL_VARIATION);Collect.Hit("Blinky.java","Blinky(Map<Direction, Sprite> spriteMap)");Collect.Hit("Blinky.java","Blinky(Map<Direction, Sprite> spriteMap)", "4972");}
 
 	/**
 	 * {@inheritDoc}
