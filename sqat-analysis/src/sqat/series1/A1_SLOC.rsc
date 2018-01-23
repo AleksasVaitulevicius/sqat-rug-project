@@ -38,6 +38,8 @@ Bonus:
 
 alias SLOC = map[loc file, int sloc];
 
+loc project() = |project://jpacman-framework|;
+
 SLOC sloc(loc project, int threshold = 66000) {
   	SRC = iterateSloc(project + "src" + "main");
   	TEST = iterateSloc(project + "src" + "test");
