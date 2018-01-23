@@ -1,0 +1,10 @@
+
+PacManUiBuilder(),1068,1100,1141,
+withDefaultButtons(),3414,3440,3477,
+addKey(Integer keyCode, Action action),2655,2682,2710,
+addKey(Integer keyCode, Action action),2655,2682,2710,
+addKey(Integer keyCode, Action action),2655,2682,2710,
+addKey(Integer keyCode, Action action),2655,2682,2710,
+build(final Game game),1432,
+addStartButton(final Game game),2171,2197,
+addStopButton(final Game game),1815,1841,1458,

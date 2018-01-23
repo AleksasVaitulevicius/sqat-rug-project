@@ -15,7 +15,7 @@ import javax.imageio.ImageIO; public class SpriteStore {
 	/**
 	 * Create a new sprite store.
 	 */
-	public SpriteStore() {Collect.Hit("SpriteStore.java","SpriteStore()");spriteMap = new HashMap<>(); Collect.Hit("SpriteStore.java","SpriteStore()", "|project://jpacman-framework/src/main/java/nl/tudelft/jpacman/sprite/SpriteStore.java|(546,28,<28,2>,<28,30>)");}
+	public SpriteStore() {Collect.Hit("SpriteStore.java","SpriteStore()");spriteMap = new HashMap<>(); Collect.Hit("SpriteStore.java","SpriteStore()", "546");}
 	
 	/**
 	 * Loads a sprite from a resource on the class path.
@@ -28,10 +28,10 @@ import javax.imageio.ImageIO; public class SpriteStore {
 	 * @throws IOException
 	 *             When the resource could not be loaded.
 	 */
-	public Sprite loadSprite(String resource) throws IOException {Collect.Hit("SpriteStore.java","loadSprite(String resource)");Sprite result = spriteMap.get(resource); Collect.Hit("SpriteStore.java","loadSprite(String resource)", "|project://jpacman-framework/src/main/java/nl/tudelft/jpacman/sprite/SpriteStore.java|(1009,40,<43,2>,<43,42>)"); if (result == null) {
+	public Sprite loadSprite(String resource) throws IOException {Collect.Hit("SpriteStore.java","loadSprite(String resource)");Sprite result = spriteMap.get(resource); Collect.Hit("SpriteStore.java","loadSprite(String resource)", "1009"); if (result == null) {
 			result = loadSpriteFromResource(resource);
 			spriteMap.put(resource, result);
-		} Collect.Hit("SpriteStore.java","loadSprite(String resource)", "|project://jpacman-framework/src/main/java/nl/tudelft/jpacman/sprite/SpriteStore.java|(1053,110,<44,2>,<47,3>)"); return result; Collect.Hit("SpriteStore.java","loadSprite(String resource)", "|project://jpacman-framework/src/main/java/nl/tudelft/jpacman/sprite/SpriteStore.java|(1167,14,<48,2>,<48,16>)");}
+		} Collect.Hit("SpriteStore.java","loadSprite(String resource)", "1053"); Collect.Hit("SpriteStore.java","loadSprite(String resource)", "1167");return result ; }
 
 	/**
 	 * Loads a sprite from a resource on the class path.
@@ -49,7 +49,7 @@ import javax.imageio.ImageIO; public class SpriteStore {
 			}
 			BufferedImage image = ImageIO.read(input);
 			return new ImageSprite(image);
-		} Collect.Hit("SpriteStore.java","loadSpriteFromResource(String resource)", "|project://jpacman-framework/src/main/java/nl/tudelft/jpacman/sprite/SpriteStore.java|(1523,288,<61,2>,<68,3>)");}
+		} Collect.Hit("SpriteStore.java","loadSpriteFromResource(String resource)", "1523");}
 
 	/**
 	 * Creates a new {@link AnimatedSprite} from a base image.
@@ -64,9 +64,9 @@ import javax.imageio.ImageIO; public class SpriteStore {
 	 *            Whether this sprite is a looping animation or not.
 	 * @return The animated sprite.
 	 */
-	public AnimatedSprite createAnimatedSprite(Sprite baseImage, int frames, int delay, boolean loop) {Collect.Hit("SpriteStore.java","createAnimatedSprite(Sprite baseImage, int frames, int delay, boolean loop)");assert baseImage != null; Collect.Hit("SpriteStore.java","createAnimatedSprite(Sprite baseImage, int frames, int delay, boolean loop)", "|project://jpacman-framework/src/main/java/nl/tudelft/jpacman/sprite/SpriteStore.java|(2337,25,<85,2>,<85,27>)"); assert frames > 0; Collect.Hit("SpriteStore.java","createAnimatedSprite(Sprite baseImage, int frames, int delay, boolean loop)", "|project://jpacman-framework/src/main/java/nl/tudelft/jpacman/sprite/SpriteStore.java|(2366,18,<86,2>,<86,20>)"); int frameWidth = baseImage.getWidth() / frames; Collect.Hit("SpriteStore.java","createAnimatedSprite(Sprite baseImage, int frames, int delay, boolean loop)", "|project://jpacman-framework/src/main/java/nl/tudelft/jpacman/sprite/SpriteStore.java|(2390,47,<88,2>,<88,49>)"); Sprite[] animation = new Sprite[frames]; Collect.Hit("SpriteStore.java","createAnimatedSprite(Sprite baseImage, int frames, int delay, boolean loop)", "|project://jpacman-framework/src/main/java/nl/tudelft/jpacman/sprite/SpriteStore.java|(2443,40,<90,2>,<90,42>)"); for (int i = 0; i < frames; i++) {
+	public AnimatedSprite createAnimatedSprite(Sprite baseImage, int frames, int delay, boolean loop) {Collect.Hit("SpriteStore.java","createAnimatedSprite(Sprite baseImage, int frames, int delay, boolean loop)");assert baseImage != null; Collect.Hit("SpriteStore.java","createAnimatedSprite(Sprite baseImage, int frames, int delay, boolean loop)", "2337"); assert frames > 0; Collect.Hit("SpriteStore.java","createAnimatedSprite(Sprite baseImage, int frames, int delay, boolean loop)", "2366"); int frameWidth = baseImage.getWidth() / frames; Collect.Hit("SpriteStore.java","createAnimatedSprite(Sprite baseImage, int frames, int delay, boolean loop)", "2390"); Sprite[] animation = new Sprite[frames]; Collect.Hit("SpriteStore.java","createAnimatedSprite(Sprite baseImage, int frames, int delay, boolean loop)", "2443"); for (int i = 0; i < frames; i++) {
 			animation[i] = baseImage.split(i * frameWidth, 0, frameWidth,
 					baseImage.getHeight());
-		} Collect.Hit("SpriteStore.java","createAnimatedSprite(Sprite baseImage, int frames, int delay, boolean loop)", "|project://jpacman-framework/src/main/java/nl/tudelft/jpacman/sprite/SpriteStore.java|(2487,135,<91,2>,<94,3>)"); return new AnimatedSprite(animation, delay, loop); Collect.Hit("SpriteStore.java","createAnimatedSprite(Sprite baseImage, int frames, int delay, boolean loop)", "|project://jpacman-framework/src/main/java/nl/tudelft/jpacman/sprite/SpriteStore.java|(2628,50,<96,2>,<96,52>)");}
+		} Collect.Hit("SpriteStore.java","createAnimatedSprite(Sprite baseImage, int frames, int delay, boolean loop)", "2487"); Collect.Hit("SpriteStore.java","createAnimatedSprite(Sprite baseImage, int frames, int delay, boolean loop)", "2628");return new AnimatedSprite(animation, delay, loop) ; }
 
 }

@@ -7,7 +7,7 @@ import nl.tudelft.jpacman.board.Direction;
 import nl.tudelft.jpacman.board.Square;
 import nl.tudelft.jpacman.board.Unit; public final class Navigation {
 
-	private Navigation() {Collect.Hit("Navigation.java","Navigation()");Collect.Hit("Navigation.java","Navigation()", "|project://sqat-analysis/src/sqat/series2/A1b_DynCov.rsc|(4826,34)");}
+	private Navigation() {Collect.Hit("Navigation.java","Navigation()");Collect.Hit("Navigation.java","Navigation()", "5012");}
 	
 	/**
 	 * Calculates the shortest path. This is done by BFS. This search ensures
@@ -30,7 +30,7 @@ import nl.tudelft.jpacman.board.Unit; public final class Navigation {
 	 */
 	public static List<Direction> shortestPath(Square from, Square to, Unit traveller) {Collect.Hit("Navigation.java","shortestPath(Square from, Square to, Unit traveller)");if (from.equals(to)) {
 			return new ArrayList<>();
-		} Collect.Hit("Navigation.java","shortestPath(Square from, Square to, Unit traveller)", "|project://jpacman-framework/src/main/java/nl/tudelft/jpacman/npc/ghost/Navigation.java|(1380,57,<42,2>,<44,3>)"); List<Node> targets = new ArrayList<>(); Collect.Hit("Navigation.java","shortestPath(Square from, Square to, Unit traveller)", "|project://jpacman-framework/src/main/java/nl/tudelft/jpacman/npc/ghost/Navigation.java|(1443,39,<46,2>,<46,41>)"); Set<Square> visited = new HashSet<>(); Collect.Hit("Navigation.java","shortestPath(Square from, Square to, Unit traveller)", "|project://jpacman-framework/src/main/java/nl/tudelft/jpacman/npc/ghost/Navigation.java|(1486,38,<47,2>,<47,40>)"); targets.add(new Node(null, from, null)); Collect.Hit("Navigation.java","shortestPath(Square from, Square to, Unit traveller)", "|project://jpacman-framework/src/main/java/nl/tudelft/jpacman/npc/ghost/Navigation.java|(1528,40,<48,2>,<48,42>)"); while (!targets.isEmpty()) {
+		} Collect.Hit("Navigation.java","shortestPath(Square from, Square to, Unit traveller)", "1380"); List<Node> targets = new ArrayList<>(); Collect.Hit("Navigation.java","shortestPath(Square from, Square to, Unit traveller)", "1443"); Set<Square> visited = new HashSet<>(); Collect.Hit("Navigation.java","shortestPath(Square from, Square to, Unit traveller)", "1486"); targets.add(new Node(null, from, null)); Collect.Hit("Navigation.java","shortestPath(Square from, Square to, Unit traveller)", "1528"); while (!targets.isEmpty()) {
 			Node n = targets.remove(0);
 			Square s = n.getSquare();
 			if (s.equals(to)) {
@@ -38,7 +38,7 @@ import nl.tudelft.jpacman.board.Unit; public final class Navigation {
 			}
 			visited.add(s);
 			addNewTargets(traveller, targets, visited, n, s);
-		} Collect.Hit("Navigation.java","shortestPath(Square from, Square to, Unit traveller)", "|project://jpacman-framework/src/main/java/nl/tudelft/jpacman/npc/ghost/Navigation.java|(1572,224,<49,2>,<57,3>)"); return null; Collect.Hit("Navigation.java","shortestPath(Square from, Square to, Unit traveller)", "|project://jpacman-framework/src/main/java/nl/tudelft/jpacman/npc/ghost/Navigation.java|(1800,12,<58,2>,<58,14>)");}
+		} Collect.Hit("Navigation.java","shortestPath(Square from, Square to, Unit traveller)", "1572"); Collect.Hit("Navigation.java","shortestPath(Square from, Square to, Unit traveller)", "1800");return null ; }
 
 	private static void addNewTargets(Unit traveller, List<Node> targets, Set<Square> visited, Node n, Square s) {Collect.Hit("Navigation.java","addNewTargets(Unit traveller, List<Node> targets, Set<Square> visited, Node n, Square s)");for (Direction d : Direction.values()) {
 			Square target = s.getSquareAt(d);
@@ -47,7 +47,7 @@ import nl.tudelft.jpacman.board.Unit; public final class Navigation {
 							.isAccessibleTo(traveller))) {
 				targets.add(new Node(d, target, n));
 			}
-		} Collect.Hit("Navigation.java","addNewTargets(Unit traveller, List<Node> targets, Set<Square> visited, Node n, Square s)", "|project://jpacman-framework/src/main/java/nl/tudelft/jpacman/npc/ghost/Navigation.java|(1935,242,<62,2>,<69,3>)");}
+		} Collect.Hit("Navigation.java","addNewTargets(Unit traveller, List<Node> targets, Set<Square> visited, Node n, Square s)", "1935");}
 
 	/**
 	 * Finds the nearest unit of the given type and returns its location. This
@@ -61,7 +61,7 @@ import nl.tudelft.jpacman.board.Unit; public final class Navigation {
 	 * @return The nearest unit of the given type, or <code>null</code> if no
 	 *         such unit could be found.
 	 */
-	public static Unit findNearest(Class<? extends Unit> type,	Square currentLocation) {Collect.Hit("Navigation.java","findNearest(Class<? extends Unit> type,Square currentLocation)");List<Square> toDo = new ArrayList<>(); Collect.Hit("Navigation.java","findNearest(Class<? extends Unit> type,Square currentLocation)", "|project://jpacman-framework/src/main/java/nl/tudelft/jpacman/npc/ghost/Navigation.java|(2716,38,<85,2>,<85,40>)"); Set<Square> visited = new HashSet<>(); Collect.Hit("Navigation.java","findNearest(Class<? extends Unit> type,Square currentLocation)", "|project://jpacman-framework/src/main/java/nl/tudelft/jpacman/npc/ghost/Navigation.java|(2758,38,<86,2>,<86,40>)"); toDo.add(currentLocation); Collect.Hit("Navigation.java","findNearest(Class<? extends Unit> type,Square currentLocation)", "|project://jpacman-framework/src/main/java/nl/tudelft/jpacman/npc/ghost/Navigation.java|(2802,26,<88,2>,<88,28>)"); while (!toDo.isEmpty()) {
+	public static Unit findNearest(Class<? extends Unit> type,	Square currentLocation) {Collect.Hit("Navigation.java","findNearest(Class<? extends Unit> type,Square currentLocation)");List<Square> toDo = new ArrayList<>(); Collect.Hit("Navigation.java","findNearest(Class<? extends Unit> type,Square currentLocation)", "2716"); Set<Square> visited = new HashSet<>(); Collect.Hit("Navigation.java","findNearest(Class<? extends Unit> type,Square currentLocation)", "2758"); toDo.add(currentLocation); Collect.Hit("Navigation.java","findNearest(Class<? extends Unit> type,Square currentLocation)", "2802"); while (!toDo.isEmpty()) {
 			Square square = toDo.remove(0);
 			Unit unit = findUnit(type, square);
 			if (unit != null) {
@@ -74,7 +74,7 @@ import nl.tudelft.jpacman.board.Unit; public final class Navigation {
 					toDo.add(newTarget);
 				}
 			}
-		} Collect.Hit("Navigation.java","findNearest(Class<? extends Unit> type,Square currentLocation)", "|project://jpacman-framework/src/main/java/nl/tudelft/jpacman/npc/ghost/Navigation.java|(2834,381,<90,2>,<103,3>)"); return null; Collect.Hit("Navigation.java","findNearest(Class<? extends Unit> type,Square currentLocation)", "|project://jpacman-framework/src/main/java/nl/tudelft/jpacman/npc/ghost/Navigation.java|(3219,12,<104,2>,<104,14>)");}
+		} Collect.Hit("Navigation.java","findNearest(Class<? extends Unit> type,Square currentLocation)", "2834"); Collect.Hit("Navigation.java","findNearest(Class<? extends Unit> type,Square currentLocation)", "3219");return null ; }
 
 	/**
 	 * Determines whether a square has an occupant of a certain type.
@@ -90,7 +90,7 @@ import nl.tudelft.jpacman.board.Unit; public final class Navigation {
 			if (type.isInstance(u)) {
 				return u;
 			}
-		} Collect.Hit("Navigation.java","findUnit(Class<? extends Unit> type, Square square)", "|project://jpacman-framework/src/main/java/nl/tudelft/jpacman/npc/ghost/Navigation.java|(3633,94,<118,2>,<122,3>)"); return null; Collect.Hit("Navigation.java","findUnit(Class<? extends Unit> type, Square square)", "|project://jpacman-framework/src/main/java/nl/tudelft/jpacman/npc/ghost/Navigation.java|(3731,12,<123,2>,<123,14>)");}
+		} Collect.Hit("Navigation.java","findUnit(Class<? extends Unit> type, Square square)", "3633"); Collect.Hit("Navigation.java","findUnit(Class<? extends Unit> type, Square square)", "3731");return null ; }
 
 	/**
 	 * Helper class to keep track of the path.
@@ -127,24 +127,24 @@ import nl.tudelft.jpacman.board.Unit; public final class Navigation {
 		 *            The parent node, which is <code>null</code> for the root
 		 *            node.
 		 */
-		Node(Direction d, Square s, Node p) {Collect.Hit("Navigation.java","Node(Direction d, Square s, Node p)");this.direction = d; Collect.Hit("Navigation.java","Node(Direction d, Square s, Node p)", "|project://jpacman-framework/src/main/java/nl/tudelft/jpacman/npc/ghost/Navigation.java|(4585,19,<162,3>,<162,22>)"); this.square = s; Collect.Hit("Navigation.java","Node(Direction d, Square s, Node p)", "|project://jpacman-framework/src/main/java/nl/tudelft/jpacman/npc/ghost/Navigation.java|(4609,16,<163,3>,<163,19>)"); this.parent = p; Collect.Hit("Navigation.java","Node(Direction d, Square s, Node p)", "|project://jpacman-framework/src/main/java/nl/tudelft/jpacman/npc/ghost/Navigation.java|(4630,16,<164,3>,<164,19>)");}
+		Node(Direction d, Square s, Node p) {Collect.Hit("Navigation.java","Node(Direction d, Square s, Node p)");this.direction = d; Collect.Hit("Navigation.java","Node(Direction d, Square s, Node p)", "4585"); this.square = s; Collect.Hit("Navigation.java","Node(Direction d, Square s, Node p)", "4609"); this.parent = p; Collect.Hit("Navigation.java","Node(Direction d, Square s, Node p)", "4630");}
 
 		/**
 		 * @return The direction for this node, or <code>null</code> if this
 		 *         node is a root node.
 		 */
-		private Direction getDirection() {Collect.Hit("Navigation.java","getDirection()");return direction; Collect.Hit("Navigation.java","getDirection()", "|project://jpacman-framework/src/main/java/nl/tudelft/jpacman/npc/ghost/Navigation.java|(4817,17,<172,3>,<172,20>)");}
+		private Direction getDirection() {Collect.Hit("Navigation.java","getDirection()"); Collect.Hit("Navigation.java","getDirection()", "4817");return direction ; }
 
 		/**
 		 * @return The square for this node.
 		 */
-		private Square getSquare() {Collect.Hit("Navigation.java","getSquare()");return square; Collect.Hit("Navigation.java","getSquare()", "|project://jpacman-framework/src/main/java/nl/tudelft/jpacman/npc/ghost/Navigation.java|(4932,14,<179,3>,<179,17>)");}
+		private Square getSquare() {Collect.Hit("Navigation.java","getSquare()"); Collect.Hit("Navigation.java","getSquare()", "4932");return square ; }
 
 		/**
 		 * @return The parent node, or <code>null</code> if this node is a root
 		 *         node.
 		 */
-		private Node getParent() {Collect.Hit("Navigation.java","getParent()");return parent; Collect.Hit("Navigation.java","getParent()", "|project://jpacman-framework/src/main/java/nl/tudelft/jpacman/npc/ghost/Navigation.java|(5097,14,<187,3>,<187,17>)");}
+		private Node getParent() {Collect.Hit("Navigation.java","getParent()"); Collect.Hit("Navigation.java","getParent()", "5097");return parent ; }
 
 		/**
 		 * Returns the list of values from the root of the tree to this node.
@@ -153,6 +153,6 @@ import nl.tudelft.jpacman.board.Unit; public final class Navigation {
 		 */
 		private List<Direction> getPath() {Collect.Hit("Navigation.java","getPath()");if (getParent() == null) {
 				return new ArrayList<>();
-			} Collect.Hit("Navigation.java","getPath()", "|project://jpacman-framework/src/main/java/nl/tudelft/jpacman/npc/ghost/Navigation.java|(5329,63,<196,3>,<198,4>)"); List<Direction> path = parent.getPath(); Collect.Hit("Navigation.java","getPath()", "|project://jpacman-framework/src/main/java/nl/tudelft/jpacman/npc/ghost/Navigation.java|(5397,40,<199,3>,<199,43>)"); path.add(getDirection()); Collect.Hit("Navigation.java","getPath()", "|project://jpacman-framework/src/main/java/nl/tudelft/jpacman/npc/ghost/Navigation.java|(5442,25,<200,3>,<200,28>)"); return path; Collect.Hit("Navigation.java","getPath()", "|project://jpacman-framework/src/main/java/nl/tudelft/jpacman/npc/ghost/Navigation.java|(5472,12,<201,3>,<201,15>)");}
+			} Collect.Hit("Navigation.java","getPath()", "5329"); List<Direction> path = parent.getPath(); Collect.Hit("Navigation.java","getPath()", "5397"); path.add(getDirection()); Collect.Hit("Navigation.java","getPath()", "5442"); Collect.Hit("Navigation.java","getPath()", "5472");return path ; }
 	}
 }

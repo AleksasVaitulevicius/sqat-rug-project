@@ -25,7 +25,7 @@ import nl.tudelft.jpacman.sprite.Sprite; public class Blinky extends Ghost {
 	 */
 	// TODO Blinky should speed up when there are a few pellets left, but he
 	// has no way to find out how many there are.
-	public Blinky(Map<Direction, Sprite> spriteMap) {super(spriteMap, MOVE_INTERVAL, INTERVAL_VARIATION);Collect.Hit("Blinky.java","Blinky(Map<Direction, Sprite> spriteMap)");Collect.Hit("Blinky.java","Blinky(Map<Direction, Sprite> spriteMap)", "|project://sqat-analysis/src/sqat/series2/A1b_DynCov.rsc|(4826,34)");}
+	public Blinky(Map<Direction, Sprite> spriteMap) {super(spriteMap, MOVE_INTERVAL, INTERVAL_VARIATION);Collect.Hit("Blinky.java","Blinky(Map<Direction, Sprite> spriteMap)");Collect.Hit("Blinky.java","Blinky(Map<Direction, Sprite> spriteMap)", "5012");}
 
 	/**
 	 * {@inheritDoc}
@@ -42,10 +42,10 @@ import nl.tudelft.jpacman.sprite.Sprite; public class Blinky extends Ghost {
 	 */
 	@Override
 	public Direction nextMove() {Collect.Hit("Blinky.java","nextMove()");Square target = Navigation.findNearest(Player.class, getSquare())
-				.getSquare(); Collect.Hit("Blinky.java","nextMove()", "|project://jpacman-framework/src/main/java/nl/tudelft/jpacman/npc/ghost/Blinky.java|(2975,84,<82,2>,<83,17>)"); if (target == null) {
+				.getSquare(); Collect.Hit("Blinky.java","nextMove()", "2975"); if (target == null) {
 			return randomMove();
-		} Collect.Hit("Blinky.java","nextMove()", "|project://jpacman-framework/src/main/java/nl/tudelft/jpacman/npc/ghost/Blinky.java|(3065,51,<85,2>,<87,3>)"); List<Direction> path = Navigation.shortestPath(getSquare(), target,
-				this); Collect.Hit("Blinky.java","nextMove()", "|project://jpacman-framework/src/main/java/nl/tudelft/jpacman/npc/ghost/Blinky.java|(3124,79,<89,2>,<90,10>)"); if (path != null && !path.isEmpty()) {
+		} Collect.Hit("Blinky.java","nextMove()", "3065"); List<Direction> path = Navigation.shortestPath(getSquare(), target,
+				this); Collect.Hit("Blinky.java","nextMove()", "3124"); if (path != null && !path.isEmpty()) {
 			return path.get(0);
-		} Collect.Hit("Blinky.java","nextMove()", "|project://jpacman-framework/src/main/java/nl/tudelft/jpacman/npc/ghost/Blinky.java|(3207,67,<91,2>,<93,3>)"); return randomMove(); Collect.Hit("Blinky.java","nextMove()", "|project://jpacman-framework/src/main/java/nl/tudelft/jpacman/npc/ghost/Blinky.java|(3278,20,<94,2>,<94,22>)");}
+		} Collect.Hit("Blinky.java","nextMove()", "3207"); Collect.Hit("Blinky.java","nextMove()", "3278");return randomMove() ; }
 }

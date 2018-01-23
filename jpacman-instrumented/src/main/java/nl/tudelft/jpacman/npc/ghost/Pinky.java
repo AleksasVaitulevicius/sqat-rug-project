@@ -26,7 +26,7 @@ import nl.tudelft.jpacman.sprite.Sprite; public class Pinky extends Ghost {
 	 * @param spriteMap
 	 *            The sprites for this ghost.
 	 */
-	public Pinky(Map<Direction, Sprite> spriteMap) {super(spriteMap, MOVE_INTERVAL, INTERVAL_VARIATION);Collect.Hit("Pinky.java","Pinky(Map<Direction, Sprite> spriteMap)");Collect.Hit("Pinky.java","Pinky(Map<Direction, Sprite> spriteMap)", "|project://sqat-analysis/src/sqat/series2/A1b_DynCov.rsc|(4826,34)");}
+	public Pinky(Map<Direction, Sprite> spriteMap) {super(spriteMap, MOVE_INTERVAL, INTERVAL_VARIATION);Collect.Hit("Pinky.java","Pinky(Map<Direction, Sprite> spriteMap)");Collect.Hit("Pinky.java","Pinky(Map<Direction, Sprite> spriteMap)", "5012");}
 
 	/**
 	 * {@inheritDoc}
@@ -43,12 +43,12 @@ import nl.tudelft.jpacman.sprite.Sprite; public class Pinky extends Ghost {
 	 * </p>
 	 */
 	@Override
-	public Direction nextMove() {Collect.Hit("Pinky.java","nextMove()");Unit player = Navigation.findNearest(Player.class, getSquare()); Collect.Hit("Pinky.java","nextMove()", "|project://jpacman-framework/src/main/java/nl/tudelft/jpacman/npc/ghost/Pinky.java|(3368,64,<90,2>,<90,66>)"); if (player == null) {
+	public Direction nextMove() {Collect.Hit("Pinky.java","nextMove()");Unit player = Navigation.findNearest(Player.class, getSquare()); Collect.Hit("Pinky.java","nextMove()", "3368"); if (player == null) {
 			return randomMove();
-		} Collect.Hit("Pinky.java","nextMove()", "|project://jpacman-framework/src/main/java/nl/tudelft/jpacman/npc/ghost/Pinky.java|(3436,51,<91,2>,<93,3>)"); Direction targetDirection = player.getDirection(); Collect.Hit("Pinky.java","nextMove()", "|project://jpacman-framework/src/main/java/nl/tudelft/jpacman/npc/ghost/Pinky.java|(3493,50,<95,2>,<95,52>)"); Square destination = player.getSquare(); Collect.Hit("Pinky.java","nextMove()", "|project://jpacman-framework/src/main/java/nl/tudelft/jpacman/npc/ghost/Pinky.java|(3547,40,<96,2>,<96,42>)"); for (int i = 0; i < SQUARES_AHEAD; i++) {
+		} Collect.Hit("Pinky.java","nextMove()", "3436"); Direction targetDirection = player.getDirection(); Collect.Hit("Pinky.java","nextMove()", "3493"); Square destination = player.getSquare(); Collect.Hit("Pinky.java","nextMove()", "3547"); for (int i = 0; i < SQUARES_AHEAD; i++) {
 			destination = destination.getSquareAt(targetDirection);
-		} Collect.Hit("Pinky.java","nextMove()", "|project://jpacman-framework/src/main/java/nl/tudelft/jpacman/npc/ghost/Pinky.java|(3591,106,<97,2>,<99,3>)"); List<Direction> path = Navigation.shortestPath(getSquare(),
-				destination, this); Collect.Hit("Pinky.java","nextMove()", "|project://jpacman-framework/src/main/java/nl/tudelft/jpacman/npc/ghost/Pinky.java|(3703,84,<101,2>,<102,23>)"); if (path != null && !path.isEmpty()) {
+		} Collect.Hit("Pinky.java","nextMove()", "3591"); List<Direction> path = Navigation.shortestPath(getSquare(),
+				destination, this); Collect.Hit("Pinky.java","nextMove()", "3703"); if (path != null && !path.isEmpty()) {
 			return path.get(0);
-		} Collect.Hit("Pinky.java","nextMove()", "|project://jpacman-framework/src/main/java/nl/tudelft/jpacman/npc/ghost/Pinky.java|(3791,67,<103,2>,<105,3>)"); return randomMove(); Collect.Hit("Pinky.java","nextMove()", "|project://jpacman-framework/src/main/java/nl/tudelft/jpacman/npc/ghost/Pinky.java|(3862,20,<106,2>,<106,22>)");}
+		} Collect.Hit("Pinky.java","nextMove()", "3791"); Collect.Hit("Pinky.java","nextMove()", "3862");return randomMove() ; }
 }

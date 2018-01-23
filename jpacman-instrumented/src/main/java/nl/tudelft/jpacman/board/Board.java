@@ -12,7 +12,7 @@ package nl.tudelft.jpacman.board;import coverageApi.Collect; public class Board 
 	 *            The grid of squares with grid[x][y] being the square at column
 	 *            x, row y.
 	 */
-	Board(Square[][] grid) {Collect.Hit("Board.java","Board(Square[][] grid)");assert grid != null; Collect.Hit("Board.java","Board(Square[][] grid)", "|project://jpacman-framework/src/main/java/nl/tudelft/jpacman/board/Board.java|(477,20,<23,2>,<23,22>)"); this.board = grid; Collect.Hit("Board.java","Board(Square[][] grid)", "|project://jpacman-framework/src/main/java/nl/tudelft/jpacman/board/Board.java|(501,18,<24,2>,<24,20>)"); assert invariant() : "Initial grid cannot contain null squares"; Collect.Hit("Board.java","Board(Square[][] grid)", "|project://jpacman-framework/src/main/java/nl/tudelft/jpacman/board/Board.java|(523,64,<25,2>,<25,66>)");}
+	Board(Square[][] grid) {Collect.Hit("Board.java","Board(Square[][] grid)");assert grid != null; Collect.Hit("Board.java","Board(Square[][] grid)", "477"); this.board = grid; Collect.Hit("Board.java","Board(Square[][] grid)", "501"); assert invariant() : "Initial grid cannot contain null squares"; Collect.Hit("Board.java","Board(Square[][] grid)", "523");}
 	
 	/**
 	 * Whatever happens, the squares on the board can't be null.
@@ -24,21 +24,21 @@ package nl.tudelft.jpacman.board;import coverageApi.Collect; public class Board 
 					return false;
 				}
 			}
-		} Collect.Hit("Board.java","invariant()", "|project://jpacman-framework/src/main/java/nl/tudelft/jpacman/board/Board.java|(768,125,<33,2>,<39,3>)"); return true; Collect.Hit("Board.java","invariant()", "|project://jpacman-framework/src/main/java/nl/tudelft/jpacman/board/Board.java|(897,12,<40,2>,<40,14>)");}
+		} Collect.Hit("Board.java","invariant()", "768"); Collect.Hit("Board.java","invariant()", "897");return true ; }
 
 	/**
 	 * Returns the number of columns.
 	 * 
 	 * @return The width of this board.
 	 */
-	public int getWidth() {Collect.Hit("Board.java","getWidth()");return board.length; Collect.Hit("Board.java","getWidth()", "|project://jpacman-framework/src/main/java/nl/tudelft/jpacman/board/Board.java|(1037,20,<49,2>,<49,22>)");}
+	public int getWidth() {Collect.Hit("Board.java","getWidth()"); Collect.Hit("Board.java","getWidth()", "1037");return board.length ; }
 
 	/**
 	 * Returns the number of rows.
 	 * 
 	 * @return The height of this board.
 	 */
-	public int getHeight() {Collect.Hit("Board.java","getHeight()");return board[0].length; Collect.Hit("Board.java","getHeight()", "|project://jpacman-framework/src/main/java/nl/tudelft/jpacman/board/Board.java|(1184,23,<58,2>,<58,25>)");}
+	public int getHeight() {Collect.Hit("Board.java","getHeight()"); Collect.Hit("Board.java","getHeight()", "1184");return board[0].length ; }
 
 	/**
 	 * Returns the square at the given <code>x,y</code> position.
@@ -49,7 +49,7 @@ package nl.tudelft.jpacman.board;import coverageApi.Collect; public class Board 
 	 *            The <code>y</code> position (row) of the requested square.
 	 * @return The square at the given <code>x,y</code> position (never null).
 	 */
-	public Square squareAt(int x, int y) {Collect.Hit("Board.java","squareAt(int x, int y)");assert withinBorders(x, y); Collect.Hit("Board.java","squareAt(int x, int y)", "|project://jpacman-framework/src/main/java/nl/tudelft/jpacman/board/Board.java|(1598,27,<71,2>,<71,29>)"); Square result = board[x][y]; Collect.Hit("Board.java","squareAt(int x, int y)", "|project://jpacman-framework/src/main/java/nl/tudelft/jpacman/board/Board.java|(1629,28,<72,2>,<72,30>)"); assert result != null : "Follows from invariant."; Collect.Hit("Board.java","squareAt(int x, int y)", "|project://jpacman-framework/src/main/java/nl/tudelft/jpacman/board/Board.java|(1661,50,<73,2>,<73,52>)"); return result; Collect.Hit("Board.java","squareAt(int x, int y)", "|project://jpacman-framework/src/main/java/nl/tudelft/jpacman/board/Board.java|(1715,14,<74,2>,<74,16>)");}
+	public Square squareAt(int x, int y) {Collect.Hit("Board.java","squareAt(int x, int y)");assert withinBorders(x, y); Collect.Hit("Board.java","squareAt(int x, int y)", "1598"); Square result = board[x][y]; Collect.Hit("Board.java","squareAt(int x, int y)", "1629"); assert result != null : "Follows from invariant."; Collect.Hit("Board.java","squareAt(int x, int y)", "1661"); Collect.Hit("Board.java","squareAt(int x, int y)", "1715");return result ; }
 
 	/**
 	 * Determines whether the given <code>x,y</code> position is on this board.
@@ -60,5 +60,5 @@ package nl.tudelft.jpacman.board;import coverageApi.Collect; public class Board 
 	 *            The <code>y</code> position (column) to test.
 	 * @return <code>true</code> iff the position is on this board.
 	 */
-	public boolean withinBorders(int x, int y) {Collect.Hit("Board.java","withinBorders(int x, int y)");return x >= 0 && x < getWidth() && y >= 0 && y < getHeight(); Collect.Hit("Board.java","withinBorders(int x, int y)", "|project://jpacman-framework/src/main/java/nl/tudelft/jpacman/board/Board.java|(2097,61,<87,2>,<87,63>)");}
+	public boolean withinBorders(int x, int y) {Collect.Hit("Board.java","withinBorders(int x, int y)"); Collect.Hit("Board.java","withinBorders(int x, int y)", "2097");return x >= 0 && x < getWidth() && y >= 0 && y < getHeight() ; }
 }

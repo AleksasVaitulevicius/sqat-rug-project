@@ -83,7 +83,7 @@ void insertStatements(loc project, str cl) {
 			method = getMethodName(unparse(m));
 	   		BlockStm statement = [BlockStm] "Collect.Hit(\"<class>\",\"<method>\");"; 
 	   		BlockStm* stms2 = putAfterEvery(stms, BlockStm (loc l) {   											
-	    										BlockStm statement = [BlockStm] "Collect.Hit(\"<class>\",\"<method>\", \"<l/*.begin.line*/>\");"; 
+	    										BlockStm statement = [BlockStm] "Collect.Hit(\"<class>\",\"<method>\", \"<l.offset/*.begin.line*/>\");"; 
 	    										return statement;
 	    	});
 	   		MethodBody mb = [MethodBody] "{<statement><stms2>}";
@@ -92,17 +92,20 @@ void insertStatements(loc project, str cl) {
 	   	
 		case (ConstrDec) `<ConstrHead c>{<ConstrInv? co><BlockStm* stms>}` : {
 			method = getMethodName(unparse(c)); 
-			println(method);
 	   		BlockStm statement = [BlockStm] "Collect.Hit(\"<class>\",\"<method>\");"; 
 	   		BlockStm* stms2 = putAfterEvery(stms, BlockStm (loc l) {
-	    										BlockStm statement = [BlockStm] "Collect.Hit(\"<class>\",\"<method>\", \"<l/*.begin.line*/>\");"; 
+	    										BlockStm statement = [BlockStm] "Collect.Hit(\"<class>\",\"<method>\", \"<l.offset/*.begin.line*/>\");"; 
 	    										return statement;
 	    	});
 	   		ConstrBody cb = [ConstrBody] "{<co><statement><stms2>}";
 	   		insert (ConstrDec)`<ConstrHead c><ConstrBody cb>`;
 	    }
 	}
-	str newClass = unparse(newTree);
+	
+	newnewTree = visit (newTree) {
+		case (MethodBody)`{<BlockStm* stms> return <Expr? e> ; <BlockStm* stms2>}`=> (MethodBody)`{<BlockStm* stms> <BlockStm* stms2>return <Expr? e> ; }`
+	}
+	str newClass = unparse(newnewTree);
 	project.authority = "jpacman-instrumented";
 	writeFile(project, newClass);
 }

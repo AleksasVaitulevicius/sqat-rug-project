@@ -41,7 +41,7 @@ import nl.tudelft.jpacman.sprite.Sprite; public class Clyde extends Ghost {
 	 * @param spriteMap
 	 *            The sprites for this ghost.
 	 */
-	public Clyde(Map<Direction, Sprite> spriteMap) {super(spriteMap, MOVE_INTERVAL, INTERVAL_VARIATION);Collect.Hit("Clyde.java","Clyde(Map<Direction, Sprite> spriteMap)");Collect.Hit("Clyde.java","Clyde(Map<Direction, Sprite> spriteMap)", "|project://sqat-analysis/src/sqat/series2/A1b_DynCov.rsc|(4826,34)");}
+	public Clyde(Map<Direction, Sprite> spriteMap) {super(spriteMap, MOVE_INTERVAL, INTERVAL_VARIATION);Collect.Hit("Clyde.java","Clyde(Map<Direction, Sprite> spriteMap)");Collect.Hit("Clyde.java","Clyde(Map<Direction, Sprite> spriteMap)", "5012");}
 
 	/**
 	 * {@inheritDoc}
@@ -62,14 +62,14 @@ import nl.tudelft.jpacman.sprite.Sprite; public class Clyde extends Ghost {
 	 */
 	@Override
 	public Direction nextMove() {Collect.Hit("Clyde.java","nextMove()");Square target = Navigation.findNearest(Player.class, getSquare())
-				.getSquare(); Collect.Hit("Clyde.java","nextMove()", "|project://jpacman-framework/src/main/java/nl/tudelft/jpacman/npc/ghost/Clyde.java|(3376,84,<100,2>,<101,17>)"); if (target == null) {
+				.getSquare(); Collect.Hit("Clyde.java","nextMove()", "3376"); if (target == null) {
 			return randomMove();
-		} Collect.Hit("Clyde.java","nextMove()", "|project://jpacman-framework/src/main/java/nl/tudelft/jpacman/npc/ghost/Clyde.java|(3464,51,<102,2>,<104,3>)"); List<Direction> path = Navigation.shortestPath(getSquare(), target,
-				this); Collect.Hit("Clyde.java","nextMove()", "|project://jpacman-framework/src/main/java/nl/tudelft/jpacman/npc/ghost/Clyde.java|(3521,79,<106,2>,<107,10>)"); if (path != null && !path.isEmpty()) {
+		} Collect.Hit("Clyde.java","nextMove()", "3464"); List<Direction> path = Navigation.shortestPath(getSquare(), target,
+				this); Collect.Hit("Clyde.java","nextMove()", "3521"); if (path != null && !path.isEmpty()) {
 			Direction d = path.get(0);
 			if (path.size() <= SHYNESS) {
 				return OPPOSITES.get(d);
 			}
 			return d;
-		} Collect.Hit("Clyde.java","nextMove()", "|project://jpacman-framework/src/main/java/nl/tudelft/jpacman/npc/ghost/Clyde.java|(3604,158,<108,2>,<114,3>)"); return randomMove(); Collect.Hit("Clyde.java","nextMove()", "|project://jpacman-framework/src/main/java/nl/tudelft/jpacman/npc/ghost/Clyde.java|(3766,20,<115,2>,<115,22>)");}
+		} Collect.Hit("Clyde.java","nextMove()", "3604"); Collect.Hit("Clyde.java","nextMove()", "3766");return randomMove() ; }
 }

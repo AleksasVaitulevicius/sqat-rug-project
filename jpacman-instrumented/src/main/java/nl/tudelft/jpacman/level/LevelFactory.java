@@ -45,7 +45,7 @@ import nl.tudelft.jpacman.sprite.Sprite; public class LevelFactory {
 	 * @param ghostFactory
 	 *            The factory providing ghosts.
 	 */
-	public LevelFactory(PacManSprites spriteStore, GhostFactory ghostFactory) {Collect.Hit("LevelFactory.java","LevelFactory(PacManSprites spriteStore, GhostFactory ghostFactory)");this.sprites = spriteStore; Collect.Hit("LevelFactory.java","LevelFactory(PacManSprites spriteStore, GhostFactory ghostFactory)", "|project://jpacman-framework/src/main/java/nl/tudelft/jpacman/level/LevelFactory.java|(1471,27,<58,2>,<58,29>)"); this.ghostIndex = -1; Collect.Hit("LevelFactory.java","LevelFactory(PacManSprites spriteStore, GhostFactory ghostFactory)", "|project://jpacman-framework/src/main/java/nl/tudelft/jpacman/level/LevelFactory.java|(1502,21,<59,2>,<59,23>)"); this.ghostFact = ghostFactory; Collect.Hit("LevelFactory.java","LevelFactory(PacManSprites spriteStore, GhostFactory ghostFactory)", "|project://jpacman-framework/src/main/java/nl/tudelft/jpacman/level/LevelFactory.java|(1527,30,<60,2>,<60,32>)");}
+	public LevelFactory(PacManSprites spriteStore, GhostFactory ghostFactory) {Collect.Hit("LevelFactory.java","LevelFactory(PacManSprites spriteStore, GhostFactory ghostFactory)");this.sprites = spriteStore; Collect.Hit("LevelFactory.java","LevelFactory(PacManSprites spriteStore, GhostFactory ghostFactory)", "1471"); this.ghostIndex = -1; Collect.Hit("LevelFactory.java","LevelFactory(PacManSprites spriteStore, GhostFactory ghostFactory)", "1502"); this.ghostFact = ghostFactory; Collect.Hit("LevelFactory.java","LevelFactory(PacManSprites spriteStore, GhostFactory ghostFactory)", "1527");}
 
 	/**
 	 * Creates a new level from the provided data.
@@ -58,14 +58,14 @@ import nl.tudelft.jpacman.sprite.Sprite; public class LevelFactory {
 	 *            A list of squares from which players may start the game.
 	 * @return A new level for the board.
 	 */
-	public Level createLevel(Board board, List<NPC> ghosts, List<Square> startPositions) {Collect.Hit("LevelFactory.java","createLevel(Board board, List<NPC> ghosts, List<Square> startPositions)");CollisionMap collisionMap = new PlayerCollisions(); Collect.Hit("LevelFactory.java","createLevel(Board board, List<NPC> ghosts, List<Square> startPositions)", "|project://jpacman-framework/src/main/java/nl/tudelft/jpacman/level/LevelFactory.java|(2084,51,<77,2>,<77,53>)"); return new Level(board, ghosts, startPositions, collisionMap); Collect.Hit("LevelFactory.java","createLevel(Board board, List<NPC> ghosts, List<Square> startPositions)", "|project://jpacman-framework/src/main/java/nl/tudelft/jpacman/level/LevelFactory.java|(2143,62,<79,2>,<79,64>)");}
+	public Level createLevel(Board board, List<NPC> ghosts, List<Square> startPositions) {Collect.Hit("LevelFactory.java","createLevel(Board board, List<NPC> ghosts, List<Square> startPositions)");CollisionMap collisionMap = new PlayerCollisions(); Collect.Hit("LevelFactory.java","createLevel(Board board, List<NPC> ghosts, List<Square> startPositions)", "2084"); Collect.Hit("LevelFactory.java","createLevel(Board board, List<NPC> ghosts, List<Square> startPositions)", "2143");return new Level(board, ghosts, startPositions, collisionMap) ; }
 
 	/**
 	 * Creates a new ghost.
 	 * 
 	 * @return The new ghost.
 	 */
-	NPC createGhost() {Collect.Hit("LevelFactory.java","createGhost()");ghostIndex++; Collect.Hit("LevelFactory.java","createGhost()", "|project://jpacman-framework/src/main/java/nl/tudelft/jpacman/level/LevelFactory.java|(2309,13,<88,2>,<88,15>)"); ghostIndex %= GHOSTS; Collect.Hit("LevelFactory.java","createGhost()", "|project://jpacman-framework/src/main/java/nl/tudelft/jpacman/level/LevelFactory.java|(2326,21,<89,2>,<89,23>)"); switch (ghostIndex) {
+	NPC createGhost() {Collect.Hit("LevelFactory.java","createGhost()");ghostIndex++; Collect.Hit("LevelFactory.java","createGhost()", "2309"); ghostIndex %= GHOSTS; Collect.Hit("LevelFactory.java","createGhost()", "2326"); switch (ghostIndex) {
 		case BLINKY:
 			return ghostFact.createBlinky();
 		case INKY:
@@ -76,14 +76,14 @@ import nl.tudelft.jpacman.sprite.Sprite; public class LevelFactory {
 			return ghostFact.createClyde();
 		default:
 			return new RandomGhost(sprites.getGhostSprite(GhostColor.RED));
-		} Collect.Hit("LevelFactory.java","createGhost()", "|project://jpacman-framework/src/main/java/nl/tudelft/jpacman/level/LevelFactory.java|(2351,310,<90,2>,<101,3>)");}
+		} Collect.Hit("LevelFactory.java","createGhost()", "2351");}
 
 	/**
 	 * Creates a new pellet.
 	 * 
 	 * @return The new pellet.
 	 */
-	public Pellet createPellet() {Collect.Hit("LevelFactory.java","createPellet()");return new Pellet(PELLET_VALUE, sprites.getPelletSprite()); Collect.Hit("LevelFactory.java","createPellet()", "|project://jpacman-framework/src/main/java/nl/tudelft/jpacman/level/LevelFactory.java|(2778,59,<110,2>,<110,61>)");}
+	public Pellet createPellet() {Collect.Hit("LevelFactory.java","createPellet()"); Collect.Hit("LevelFactory.java","createPellet()", "2778");return new Pellet(PELLET_VALUE, sprites.getPelletSprite()) ; }
 
 	/**
 	 * Implementation of an NPC that wanders around randomly.
@@ -103,9 +103,9 @@ import nl.tudelft.jpacman.sprite.Sprite; public class LevelFactory {
 		 * @param ghostSprite
 		 *            The sprite for the ghost.
 		 */
-		RandomGhost(Map<Direction, Sprite> ghostSprite) {super(ghostSprite, (int) DELAY, 0);Collect.Hit("LevelFactory.java","RandomGhost(Map<Direction, Sprite> ghostSprite)");Collect.Hit("LevelFactory.java","RandomGhost(Map<Direction, Sprite> ghostSprite)", "|project://sqat-analysis/src/sqat/series2/A1b_DynCov.rsc|(4826,34)");}
+		RandomGhost(Map<Direction, Sprite> ghostSprite) {super(ghostSprite, (int) DELAY, 0);Collect.Hit("LevelFactory.java","RandomGhost(Map<Direction, Sprite> ghostSprite)");Collect.Hit("LevelFactory.java","RandomGhost(Map<Direction, Sprite> ghostSprite)", "5012");}
 
 		@Override
-		public Direction nextMove() {Collect.Hit("LevelFactory.java","nextMove()");return randomMove(); Collect.Hit("LevelFactory.java","nextMove()", "|project://jpacman-framework/src/main/java/nl/tudelft/jpacman/level/LevelFactory.java|(3382,20,<137,3>,<137,23>)");}
+		public Direction nextMove() {Collect.Hit("LevelFactory.java","nextMove()"); Collect.Hit("LevelFactory.java","nextMove()", "3382");return randomMove() ; }
 	}
 }

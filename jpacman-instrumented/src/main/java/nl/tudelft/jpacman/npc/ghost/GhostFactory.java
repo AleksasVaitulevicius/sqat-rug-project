@@ -10,7 +10,7 @@ package nl.tudelft.jpacman.npc.ghost;import coverageApi.Collect;import nl.tudelf
 	 * 
 	 * @param spriteStore The sprite provider.
 	 */
-	public GhostFactory(PacManSprites spriteStore) {Collect.Hit("GhostFactory.java","GhostFactory(PacManSprites spriteStore)");this.sprites = spriteStore; Collect.Hit("GhostFactory.java","GhostFactory(PacManSprites spriteStore)", "|project://jpacman-framework/src/main/java/nl/tudelft/jpacman/npc/ghost/GhostFactory.java|(453,27,<23,2>,<23,29>)");}
+	public GhostFactory(PacManSprites spriteStore) {Collect.Hit("GhostFactory.java","GhostFactory(PacManSprites spriteStore)");this.sprites = spriteStore; Collect.Hit("GhostFactory.java","GhostFactory(PacManSprites spriteStore)", "453");}
 
 	/**
 	 * Creates a new Blinky / Shadow, the red Ghost.
@@ -18,7 +18,7 @@ package nl.tudelft.jpacman.npc.ghost;import coverageApi.Collect;import nl.tudelf
 	 * @see Blinky
 	 * @return A new Blinky.
 	 */
-	public Ghost createBlinky() {Collect.Hit("GhostFactory.java","createBlinky()");return new Blinky(sprites.getGhostSprite(GhostColor.RED)); Collect.Hit("GhostFactory.java","createBlinky()", "|project://jpacman-framework/src/main/java/nl/tudelft/jpacman/npc/ghost/GhostFactory.java|(635,58,<33,2>,<33,60>)");}
+	public Ghost createBlinky() {Collect.Hit("GhostFactory.java","createBlinky()"); Collect.Hit("GhostFactory.java","createBlinky()", "635");return new Blinky(sprites.getGhostSprite(GhostColor.RED)) ; }
 
 	/**
 	 * Creates a new Pinky / Speedy, the pink Ghost.
@@ -26,7 +26,7 @@ package nl.tudelft.jpacman.npc.ghost;import coverageApi.Collect;import nl.tudelf
 	 * @see Pinky
 	 * @return A new Pinky.
 	 */
-	public Ghost createPinky() {Collect.Hit("GhostFactory.java","createPinky()");return new Pinky(sprites.getGhostSprite(GhostColor.PINK)); Collect.Hit("GhostFactory.java","createPinky()", "|project://jpacman-framework/src/main/java/nl/tudelft/jpacman/npc/ghost/GhostFactory.java|(845,58,<43,2>,<43,60>)");}
+	public Ghost createPinky() {Collect.Hit("GhostFactory.java","createPinky()"); Collect.Hit("GhostFactory.java","createPinky()", "845");return new Pinky(sprites.getGhostSprite(GhostColor.PINK)) ; }
 
 	/**
 	 * Creates a new Inky / Bashful, the cyan Ghost.
@@ -34,7 +34,7 @@ package nl.tudelft.jpacman.npc.ghost;import coverageApi.Collect;import nl.tudelf
 	 * @see Inky
 	 * @return A new Inky.
 	 */
-	public Ghost createInky() {Collect.Hit("GhostFactory.java","createInky()");return new Inky(sprites.getGhostSprite(GhostColor.CYAN)); Collect.Hit("GhostFactory.java","createInky()", "|project://jpacman-framework/src/main/java/nl/tudelft/jpacman/npc/ghost/GhostFactory.java|(1052,57,<53,2>,<53,59>)");}
+	public Ghost createInky() {Collect.Hit("GhostFactory.java","createInky()"); Collect.Hit("GhostFactory.java","createInky()", "1052");return new Inky(sprites.getGhostSprite(GhostColor.CYAN)) ; }
 
 	/**
 	 * Creates a new Clyde / Pokey, the orange Ghost.
@@ -42,5 +42,5 @@ package nl.tudelft.jpacman.npc.ghost;import coverageApi.Collect;import nl.tudelf
 	 * @see Clyde
 	 * @return A new Clyde.
 	 */
-	public Ghost createClyde() {Collect.Hit("GhostFactory.java","createClyde()");return new Clyde(sprites.getGhostSprite(GhostColor.ORANGE)); Collect.Hit("GhostFactory.java","createClyde()", "|project://jpacman-framework/src/main/java/nl/tudelft/jpacman/npc/ghost/GhostFactory.java|(1262,60,<63,2>,<63,62>)");}
+	public Ghost createClyde() {Collect.Hit("GhostFactory.java","createClyde()"); Collect.Hit("GhostFactory.java","createClyde()", "1262");return new Clyde(sprites.getGhostSprite(GhostColor.ORANGE)) ; }
 }

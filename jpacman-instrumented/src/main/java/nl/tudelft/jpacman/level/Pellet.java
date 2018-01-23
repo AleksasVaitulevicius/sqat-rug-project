@@ -16,14 +16,14 @@ import nl.tudelft.jpacman.sprite.Sprite; public class Pellet extends Unit {
 	 * @param points The point value of this pellet.
 	 * @param sprite The sprite of this pellet.
 	 */
-	public Pellet(int points, Sprite sprite) {Collect.Hit("Pellet.java","Pellet(int points, Sprite sprite)");this.image = sprite; Collect.Hit("Pellet.java","Pellet(int points, Sprite sprite)", "|project://jpacman-framework/src/main/java/nl/tudelft/jpacman/level/Pellet.java|(598,20,<29,2>,<29,22>)"); this.value = points; Collect.Hit("Pellet.java","Pellet(int points, Sprite sprite)", "|project://jpacman-framework/src/main/java/nl/tudelft/jpacman/level/Pellet.java|(622,20,<30,2>,<30,22>)");}
+	public Pellet(int points, Sprite sprite) {Collect.Hit("Pellet.java","Pellet(int points, Sprite sprite)");this.image = sprite; Collect.Hit("Pellet.java","Pellet(int points, Sprite sprite)", "598"); this.value = points; Collect.Hit("Pellet.java","Pellet(int points, Sprite sprite)", "622");}
 	
 	/**
 	 * Returns the point value of this pellet.
 	 * @return The point value of this pellet.
 	 */
-	public int getValue() {Collect.Hit("Pellet.java","getValue()");return value; Collect.Hit("Pellet.java","getValue()", "|project://jpacman-framework/src/main/java/nl/tudelft/jpacman/level/Pellet.java|(781,13,<38,2>,<38,15>)");}
+	public int getValue() {Collect.Hit("Pellet.java","getValue()"); Collect.Hit("Pellet.java","getValue()", "781");return value ; }
 	
 	@Override
-	public Sprite getSprite() {Collect.Hit("Pellet.java","getSprite()");return image; Collect.Hit("Pellet.java","getSprite()", "|project://jpacman-framework/src/main/java/nl/tudelft/jpacman/level/Pellet.java|(847,13,<43,2>,<43,15>)");}
+	public Sprite getSprite() {Collect.Hit("Pellet.java","getSprite()"); Collect.Hit("Pellet.java","getSprite()", "847");return image ; }
 }

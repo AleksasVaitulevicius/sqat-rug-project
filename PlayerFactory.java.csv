@@ -1,0 +1,5 @@
+
+PlayerFactory(PacManSprites spriteStore),499,
+createPacMan(),
+getSprites(),
+getSprites(),

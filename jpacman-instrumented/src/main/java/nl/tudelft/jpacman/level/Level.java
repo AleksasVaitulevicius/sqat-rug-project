@@ -80,9 +80,9 @@ public class Level {
 	 * @param collisionMap
 	 *            The collection of collisions that should be handled.
 	 */
-	public Level(Board b, List<NPC> ghosts, List<Square> startPositions, CollisionMap collisionMap) {Collect.Hit("Level.java","Level(Board b, List<NPC> ghosts, List<Square> startPositions, CollisionMap collisionMap)");assert b != null; Collect.Hit("Level.java","Level(Board b, List<NPC> ghosts, List<Square> startPositions, CollisionMap collisionMap)", "|project://jpacman-framework/src/main/java/nl/tudelft/jpacman/level/Level.java|(2354,17,<94,2>,<94,19>)"); assert ghosts != null; Collect.Hit("Level.java","Level(Board b, List<NPC> ghosts, List<Square> startPositions, CollisionMap collisionMap)", "|project://jpacman-framework/src/main/java/nl/tudelft/jpacman/level/Level.java|(2375,22,<95,2>,<95,24>)"); assert startPositions != null; Collect.Hit("Level.java","Level(Board b, List<NPC> ghosts, List<Square> startPositions, CollisionMap collisionMap)", "|project://jpacman-framework/src/main/java/nl/tudelft/jpacman/level/Level.java|(2401,30,<96,2>,<96,32>)"); this.board = b; Collect.Hit("Level.java","Level(Board b, List<NPC> ghosts, List<Square> startPositions, CollisionMap collisionMap)", "|project://jpacman-framework/src/main/java/nl/tudelft/jpacman/level/Level.java|(2437,15,<98,2>,<98,17>)"); this.inProgress = false; Collect.Hit("Level.java","Level(Board b, List<NPC> ghosts, List<Square> startPositions, CollisionMap collisionMap)", "|project://jpacman-framework/src/main/java/nl/tudelft/jpacman/level/Level.java|(2456,24,<99,2>,<99,26>)"); this.npcs = new HashMap<>(); Collect.Hit("Level.java","Level(Board b, List<NPC> ghosts, List<Square> startPositions, CollisionMap collisionMap)", "|project://jpacman-framework/src/main/java/nl/tudelft/jpacman/level/Level.java|(2484,28,<100,2>,<100,30>)"); for (NPC g : ghosts) {
+	public Level(Board b, List<NPC> ghosts, List<Square> startPositions, CollisionMap collisionMap) {Collect.Hit("Level.java","Level(Board b, List<NPC> ghosts, List<Square> startPositions, CollisionMap collisionMap)");assert b != null; Collect.Hit("Level.java","Level(Board b, List<NPC> ghosts, List<Square> startPositions, CollisionMap collisionMap)", "2354"); assert ghosts != null; Collect.Hit("Level.java","Level(Board b, List<NPC> ghosts, List<Square> startPositions, CollisionMap collisionMap)", "2375"); assert startPositions != null; Collect.Hit("Level.java","Level(Board b, List<NPC> ghosts, List<Square> startPositions, CollisionMap collisionMap)", "2401"); this.board = b; Collect.Hit("Level.java","Level(Board b, List<NPC> ghosts, List<Square> startPositions, CollisionMap collisionMap)", "2437"); this.inProgress = false; Collect.Hit("Level.java","Level(Board b, List<NPC> ghosts, List<Square> startPositions, CollisionMap collisionMap)", "2456"); this.npcs = new HashMap<>(); Collect.Hit("Level.java","Level(Board b, List<NPC> ghosts, List<Square> startPositions, CollisionMap collisionMap)", "2484"); for (NPC g : ghosts) {
 			npcs.put(g, null);
-		} Collect.Hit("Level.java","Level(Board b, List<NPC> ghosts, List<Square> startPositions, CollisionMap collisionMap)", "|project://jpacman-framework/src/main/java/nl/tudelft/jpacman/level/Level.java|(2516,50,<101,2>,<103,3>)"); this.startSquares = startPositions; Collect.Hit("Level.java","Level(Board b, List<NPC> ghosts, List<Square> startPositions, CollisionMap collisionMap)", "|project://jpacman-framework/src/main/java/nl/tudelft/jpacman/level/Level.java|(2570,35,<104,2>,<104,37>)"); this.startSquareIndex = 0; Collect.Hit("Level.java","Level(Board b, List<NPC> ghosts, List<Square> startPositions, CollisionMap collisionMap)", "|project://jpacman-framework/src/main/java/nl/tudelft/jpacman/level/Level.java|(2609,26,<105,2>,<105,28>)"); this.players = new ArrayList<>(); Collect.Hit("Level.java","Level(Board b, List<NPC> ghosts, List<Square> startPositions, CollisionMap collisionMap)", "|project://jpacman-framework/src/main/java/nl/tudelft/jpacman/level/Level.java|(2639,33,<106,2>,<106,35>)"); this.collisions = collisionMap; Collect.Hit("Level.java","Level(Board b, List<NPC> ghosts, List<Square> startPositions, CollisionMap collisionMap)", "|project://jpacman-framework/src/main/java/nl/tudelft/jpacman/level/Level.java|(2676,31,<107,2>,<107,33>)"); this.observers = new HashSet<>(); Collect.Hit("Level.java","Level(Board b, List<NPC> ghosts, List<Square> startPositions, CollisionMap collisionMap)", "|project://jpacman-framework/src/main/java/nl/tudelft/jpacman/level/Level.java|(2711,33,<108,2>,<108,35>)");}
+		} Collect.Hit("Level.java","Level(Board b, List<NPC> ghosts, List<Square> startPositions, CollisionMap collisionMap)", "2516"); this.startSquares = startPositions; Collect.Hit("Level.java","Level(Board b, List<NPC> ghosts, List<Square> startPositions, CollisionMap collisionMap)", "2570"); this.startSquareIndex = 0; Collect.Hit("Level.java","Level(Board b, List<NPC> ghosts, List<Square> startPositions, CollisionMap collisionMap)", "2609"); this.players = new ArrayList<>(); Collect.Hit("Level.java","Level(Board b, List<NPC> ghosts, List<Square> startPositions, CollisionMap collisionMap)", "2639"); this.collisions = collisionMap; Collect.Hit("Level.java","Level(Board b, List<NPC> ghosts, List<Square> startPositions, CollisionMap collisionMap)", "2676"); this.observers = new HashSet<>(); Collect.Hit("Level.java","Level(Board b, List<NPC> ghosts, List<Square> startPositions, CollisionMap collisionMap)", "2711");}
 
 	/**
 	 * Adds an observer that will be notified when the level is won or lost.
@@ -90,7 +90,7 @@ public class Level {
 	 * @param observer
 	 *            The observer that will be notified.
 	 */
-	public void addObserver(LevelObserver observer) {Collect.Hit("Level.java","addObserver(LevelObserver observer)");observers.add(observer); Collect.Hit("Level.java","addObserver(LevelObserver observer)", "|project://jpacman-framework/src/main/java/nl/tudelft/jpacman/level/Level.java|(2972,24,<118,2>,<118,26>)");}
+	public void addObserver(LevelObserver observer) {Collect.Hit("Level.java","addObserver(LevelObserver observer)");observers.add(observer); Collect.Hit("Level.java","addObserver(LevelObserver observer)", "2972");}
 
 	/**
 	 * Removes an observer if it was listed.
@@ -98,7 +98,7 @@ public class Level {
 	 * @param observer
 	 *            The observer to be removed.
 	 */
-	public void removeObserver(LevelObserver observer) {Collect.Hit("Level.java","removeObserver(LevelObserver observer)");observers.remove(observer); Collect.Hit("Level.java","removeObserver(LevelObserver observer)", "|project://jpacman-framework/src/main/java/nl/tudelft/jpacman/level/Level.java|(3187,27,<128,2>,<128,29>)");}
+	public void removeObserver(LevelObserver observer) {Collect.Hit("Level.java","removeObserver(LevelObserver observer)");observers.remove(observer); Collect.Hit("Level.java","removeObserver(LevelObserver observer)", "3187");}
 
 	/**
 	 * Registers a player on this level, assigning him to a starting position. A
@@ -108,16 +108,16 @@ public class Level {
 	 * @param p
 	 *            The player to register.
 	 */
-	public void registerPlayer(Player p) {Collect.Hit("Level.java","registerPlayer(Player p)");assert p != null; Collect.Hit("Level.java","registerPlayer(Player p)", "|project://jpacman-framework/src/main/java/nl/tudelft/jpacman/level/Level.java|(3510,17,<140,2>,<140,19>)"); assert !startSquares.isEmpty(); Collect.Hit("Level.java","registerPlayer(Player p)", "|project://jpacman-framework/src/main/java/nl/tudelft/jpacman/level/Level.java|(3531,31,<141,2>,<141,33>)"); if (players.contains(p)) {
+	public void registerPlayer(Player p) {Collect.Hit("Level.java","registerPlayer(Player p)");assert p != null; Collect.Hit("Level.java","registerPlayer(Player p)", "3510"); assert !startSquares.isEmpty(); Collect.Hit("Level.java","registerPlayer(Player p)", "3531"); if (players.contains(p)) {
 			return;
-		} Collect.Hit("Level.java","registerPlayer(Player p)", "|project://jpacman-framework/src/main/java/nl/tudelft/jpacman/level/Level.java|(3568,43,<143,2>,<145,3>)"); players.add(p); Collect.Hit("Level.java","registerPlayer(Player p)", "|project://jpacman-framework/src/main/java/nl/tudelft/jpacman/level/Level.java|(3615,15,<146,2>,<146,17>)"); Square square = startSquares.get(startSquareIndex); Collect.Hit("Level.java","registerPlayer(Player p)", "|project://jpacman-framework/src/main/java/nl/tudelft/jpacman/level/Level.java|(3634,51,<147,2>,<147,53>)"); p.occupy(square); Collect.Hit("Level.java","registerPlayer(Player p)", "|project://jpacman-framework/src/main/java/nl/tudelft/jpacman/level/Level.java|(3689,17,<148,2>,<148,19>)"); startSquareIndex++; Collect.Hit("Level.java","registerPlayer(Player p)", "|project://jpacman-framework/src/main/java/nl/tudelft/jpacman/level/Level.java|(3710,19,<149,2>,<149,21>)"); startSquareIndex %= startSquares.size(); Collect.Hit("Level.java","registerPlayer(Player p)", "|project://jpacman-framework/src/main/java/nl/tudelft/jpacman/level/Level.java|(3733,40,<150,2>,<150,42>)");}
+		} Collect.Hit("Level.java","registerPlayer(Player p)", "3568"); players.add(p); Collect.Hit("Level.java","registerPlayer(Player p)", "3615"); Square square = startSquares.get(startSquareIndex); Collect.Hit("Level.java","registerPlayer(Player p)", "3634"); p.occupy(square); Collect.Hit("Level.java","registerPlayer(Player p)", "3689"); startSquareIndex++; Collect.Hit("Level.java","registerPlayer(Player p)", "3710"); startSquareIndex %= startSquares.size(); Collect.Hit("Level.java","registerPlayer(Player p)", "3733");}
 
 	/**
 	 * Returns the board of this level.
 	 * 
 	 * @return The board of this level.
 	 */
-	public Board getBoard() {Collect.Hit("Level.java","getBoard()");return board; Collect.Hit("Level.java","getBoard()", "|project://jpacman-framework/src/main/java/nl/tudelft/jpacman/level/Level.java|(3905,13,<159,2>,<159,15>)");}
+	public Board getBoard() {Collect.Hit("Level.java","getBoard()"); Collect.Hit("Level.java","getBoard()", "3905");return board ; }
 
 	/**
 	 * Moves the unit into the given direction if possible and handles all
@@ -128,9 +128,9 @@ public class Level {
 	 * @param direction
 	 *            The direction to move the unit in.
 	 */
-	public void move(Unit unit, Direction direction) {Collect.Hit("Level.java","move(Unit unit, Direction direction)");assert unit != null; Collect.Hit("Level.java","move(Unit unit, Direction direction)", "|project://jpacman-framework/src/main/java/nl/tudelft/jpacman/level/Level.java|(4213,20,<172,2>,<172,22>)"); assert direction != null; Collect.Hit("Level.java","move(Unit unit, Direction direction)", "|project://jpacman-framework/src/main/java/nl/tudelft/jpacman/level/Level.java|(4237,25,<173,2>,<173,27>)"); if (!isInProgress()) {
+	public void move(Unit unit, Direction direction) {Collect.Hit("Level.java","move(Unit unit, Direction direction)");assert unit != null; Collect.Hit("Level.java","move(Unit unit, Direction direction)", "4213"); assert direction != null; Collect.Hit("Level.java","move(Unit unit, Direction direction)", "4237"); if (!isInProgress()) {
 			return;
-		} Collect.Hit("Level.java","move(Unit unit, Direction direction)", "|project://jpacman-framework/src/main/java/nl/tudelft/jpacman/level/Level.java|(4268,39,<175,2>,<177,3>)"); synchronized (moveLock) {
+		} Collect.Hit("Level.java","move(Unit unit, Direction direction)", "4268"); synchronized (moveLock) {
 			unit.setDirection(direction);
 			Square location = unit.getSquare();
 			Square destination = location.getSquareAt(direction);
@@ -143,7 +143,7 @@ public class Level {
 				}
 			}
 			updateObservers();
-		} Collect.Hit("Level.java","move(Unit unit, Direction direction)", "|project://jpacman-framework/src/main/java/nl/tudelft/jpacman/level/Level.java|(4313,412,<179,2>,<192,3>)");}
+		} Collect.Hit("Level.java","move(Unit unit, Direction direction)", "4313");}
 
 	/**
 	 * Starts or resumes this level, allowing movement and (re)starting the
@@ -156,7 +156,7 @@ public class Level {
 			startNPCs();
 			inProgress = true;
 			updateObservers();
-		} Collect.Hit("Level.java","start()", "|project://jpacman-framework/src/main/java/nl/tudelft/jpacman/level/Level.java|(4856,143,<200,2>,<207,3>)");}
+		} Collect.Hit("Level.java","start()", "4856");}
 
 	/**
 	 * Stops or pauses this level, no longer allowing any movement on the board
@@ -168,7 +168,7 @@ public class Level {
 			}
 			stopNPCs();
 			inProgress = false;
-		} Collect.Hit("Level.java","stop()", "|project://jpacman-framework/src/main/java/nl/tudelft/jpacman/level/Level.java|(5150,121,<215,2>,<221,3>)");}
+		} Collect.Hit("Level.java","stop()", "5150");}
 
 	/**
 	 * Starts all NPC movement scheduling.
@@ -179,7 +179,7 @@ public class Level {
 			service.schedule(new NpcMoveTask(service, npc),
 					npc.getInterval() / 2, TimeUnit.MILLISECONDS);
 			npcs.put(npc, service);
-		} Collect.Hit("Level.java","startNPCs()", "|project://jpacman-framework/src/main/java/nl/tudelft/jpacman/level/Level.java|(5363,267,<228,2>,<234,3>)");}
+		} Collect.Hit("Level.java","startNPCs()", "5363");}
 
 	/**
 	 * Stops all NPC movement scheduling and interrupts any movements being
@@ -187,7 +187,7 @@ public class Level {
 	 */
 	private void stopNPCs() {Collect.Hit("Level.java","stopNPCs()");for (Entry<NPC, ScheduledExecutorService> e : npcs.entrySet()) {
 			e.getValue().shutdownNow();
-		} Collect.Hit("Level.java","stopNPCs()", "|project://jpacman-framework/src/main/java/nl/tudelft/jpacman/level/Level.java|(5769,101,<242,2>,<244,3>)");}
+		} Collect.Hit("Level.java","stopNPCs()", "5769");}
 
 	/**
 	 * Returns whether this level is in progress, i.e. whether moves can be made
@@ -195,7 +195,7 @@ public class Level {
 	 * 
 	 * @return <code>true</code> iff this level is in progress.
 	 */
-	public boolean isInProgress() {Collect.Hit("Level.java","isInProgress()");return inProgress; Collect.Hit("Level.java","isInProgress()", "|project://jpacman-framework/src/main/java/nl/tudelft/jpacman/level/Level.java|(6092,18,<254,2>,<254,20>)");}
+	public boolean isInProgress() {Collect.Hit("Level.java","isInProgress()"); Collect.Hit("Level.java","isInProgress()", "6092");return inProgress ; }
 
 	/**
 	 * Updates the observers about the state of this level.
@@ -204,11 +204,11 @@ public class Level {
 			for (LevelObserver o : observers) {
 				o.levelLost();
 			}
-		} Collect.Hit("Level.java","updateObservers()", "|project://jpacman-framework/src/main/java/nl/tudelft/jpacman/level/Level.java|(6225,97,<261,2>,<265,3>)"); if (remainingPellets() == 0) {
+		} Collect.Hit("Level.java","updateObservers()", "6225"); if (remainingPellets() == 0) {
 			for (LevelObserver o : observers) {
 				o.levelWon();
 			}
-		} Collect.Hit("Level.java","updateObservers()", "|project://jpacman-framework/src/main/java/nl/tudelft/jpacman/level/Level.java|(6326,100,<266,2>,<270,3>)");}
+		} Collect.Hit("Level.java","updateObservers()", "6326");}
 
 	/**
 	 * Returns <code>true</code> iff at least one of the players in this level
@@ -221,14 +221,14 @@ public class Level {
 			if (p.isAlive()) {
 				return true;
 			}
-		} Collect.Hit("Level.java","isAnyPlayerAlive()", "|project://jpacman-framework/src/main/java/nl/tudelft/jpacman/level/Level.java|(6680,78,<281,2>,<285,3>)"); return false; Collect.Hit("Level.java","isAnyPlayerAlive()", "|project://jpacman-framework/src/main/java/nl/tudelft/jpacman/level/Level.java|(6762,13,<286,2>,<286,15>)");}
+		} Collect.Hit("Level.java","isAnyPlayerAlive()", "6680"); Collect.Hit("Level.java","isAnyPlayerAlive()", "6762");return false ; }
 
 	/**
 	 * Counts the pellets remaining on the board.
 	 * 
 	 * @return The amount of pellets remaining on the board.
 	 */
-	public int remainingPellets() {Collect.Hit("Level.java","remainingPellets()");Board b = getBoard(); Collect.Hit("Level.java","remainingPellets()", "|project://jpacman-framework/src/main/java/nl/tudelft/jpacman/level/Level.java|(6944,21,<295,2>,<295,23>)"); int pellets = 0; Collect.Hit("Level.java","remainingPellets()", "|project://jpacman-framework/src/main/java/nl/tudelft/jpacman/level/Level.java|(6969,16,<296,2>,<296,18>)"); for (int x = 0; x < b.getWidth(); x++) {
+	public int remainingPellets() {Collect.Hit("Level.java","remainingPellets()");Board b = getBoard(); Collect.Hit("Level.java","remainingPellets()", "6944"); int pellets = 0; Collect.Hit("Level.java","remainingPellets()", "6969"); for (int x = 0; x < b.getWidth(); x++) {
 			for (int y = 0; y < b.getHeight(); y++) {
 				for (Unit u : b.squareAt(x, y).getOccupants()) {
 					if (u instanceof Pellet) {
@@ -236,7 +236,7 @@ public class Level {
 					}
 				}
 			}
-		} Collect.Hit("Level.java","remainingPellets()", "|project://jpacman-framework/src/main/java/nl/tudelft/jpacman/level/Level.java|(6989,217,<297,2>,<305,3>)"); assert pellets >= 0; Collect.Hit("Level.java","remainingPellets()", "|project://jpacman-framework/src/main/java/nl/tudelft/jpacman/level/Level.java|(7210,20,<306,2>,<306,22>)"); return pellets; Collect.Hit("Level.java","remainingPellets()", "|project://jpacman-framework/src/main/java/nl/tudelft/jpacman/level/Level.java|(7234,15,<307,2>,<307,17>)");}
+		} Collect.Hit("Level.java","remainingPellets()", "6989"); assert pellets >= 0; Collect.Hit("Level.java","remainingPellets()", "7210"); Collect.Hit("Level.java","remainingPellets()", "7234");return pellets ; }
 
 	/**
 	 * A task that moves an NPC and reschedules itself after it finished.
@@ -263,12 +263,12 @@ public class Level {
 		 * @param n
 		 *            The NPC to move.
 		 */
-		NpcMoveTask(ScheduledExecutorService s, NPC n) {Collect.Hit("Level.java","NpcMoveTask(ScheduledExecutorService s, NPC n)");this.service = s; Collect.Hit("Level.java","NpcMoveTask(ScheduledExecutorService s, NPC n)", "|project://jpacman-framework/src/main/java/nl/tudelft/jpacman/level/Level.java|(7822,17,<336,3>,<336,20>)"); this.npc = n; Collect.Hit("Level.java","NpcMoveTask(ScheduledExecutorService s, NPC n)", "|project://jpacman-framework/src/main/java/nl/tudelft/jpacman/level/Level.java|(7844,13,<337,3>,<337,16>)");}
+		NpcMoveTask(ScheduledExecutorService s, NPC n) {Collect.Hit("Level.java","NpcMoveTask(ScheduledExecutorService s, NPC n)");this.service = s; Collect.Hit("Level.java","NpcMoveTask(ScheduledExecutorService s, NPC n)", "7822"); this.npc = n; Collect.Hit("Level.java","NpcMoveTask(ScheduledExecutorService s, NPC n)", "7844");}
 
 		@Override
-		public void run() {Collect.Hit("Level.java","run()");Direction nextMove = npc.nextMove(); Collect.Hit("Level.java","run()", "|project://jpacman-framework/src/main/java/nl/tudelft/jpacman/level/Level.java|(7905,36,<342,3>,<342,39>)"); if (nextMove != null) {
+		public void run() {Collect.Hit("Level.java","run()");Direction nextMove = npc.nextMove(); Collect.Hit("Level.java","run()", "7905"); if (nextMove != null) {
 				move(npc, nextMove);
-			} Collect.Hit("Level.java","run()", "|project://jpacman-framework/src/main/java/nl/tudelft/jpacman/level/Level.java|(7946,55,<343,3>,<345,4>)"); long interval = npc.getInterval(); Collect.Hit("Level.java","run()", "|project://jpacman-framework/src/main/java/nl/tudelft/jpacman/level/Level.java|(8006,34,<346,3>,<346,37>)"); service.schedule(this, interval, TimeUnit.MILLISECONDS); Collect.Hit("Level.java","run()", "|project://jpacman-framework/src/main/java/nl/tudelft/jpacman/level/Level.java|(8045,56,<347,3>,<347,59>)");}
+			} Collect.Hit("Level.java","run()", "7946"); long interval = npc.getInterval(); Collect.Hit("Level.java","run()", "8006"); service.schedule(this, interval, TimeUnit.MILLISECONDS); Collect.Hit("Level.java","run()", "8045");}
 	}
 
 	/**
