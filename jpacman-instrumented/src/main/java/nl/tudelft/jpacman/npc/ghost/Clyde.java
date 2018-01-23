@@ -1,44 +1,11 @@
-package nl.tudelft.jpacman.npc.ghost;
-
-import java.util.EnumMap;
+package nl.tudelft.jpacman.npc.ghost;import coverageApi.Collect;import java.util.EnumMap;
 import java.util.List;
 import java.util.Map;
 
 import nl.tudelft.jpacman.board.Direction;
 import nl.tudelft.jpacman.board.Square;
 import nl.tudelft.jpacman.level.Player;
-import nl.tudelft.jpacman.sprite.Sprite;
-
-/**
- * <p>
- * An implementation of the classic Pac-Man ghost Pokey.
- * </p>
- * <p>
- * Nickname: Clyde. Pokey needs a new nickname because out of all the ghosts,
- * Pokey is the least likely to "C'lyde" with Pac-Man. Pokey is always the last
- * ghost out of the regenerator, and the loner of the gang, usually off doing
- * his own thing when not patrolling the bottom-left corner of the maze. His
- * behavior is very random, so while he's not likely to be following you in hot
- * pursuit with the other ghosts, he is a little less predictable, and still a
- * danger. In Japan, his name is Otoboke/Guzuta.
- * </p>
- * <p>
- * <b>AI:</b> Pokey has two basic AIs, one for when he's far from Pac-Man, and
- * one for when he is near to Pac-Man. When the ghosts are not patrolling their
- * home corners, and Pokey is far away from Pac-Man (beyond eight grid spaces),
- * Pokey behaves very much like Blinky, trying to move to Pac-Man's exact
- * location. However, when Pokey gets within eight grid spaces of Pac-Man, he
- * automatically changes his behavior and goes to patrol his home corner in the
- * bottom-left section of the maze.
- * </p>
- * <p>
- * Source: http://strategywiki.org/wiki/Pac-Man/Getting_Started
- * </p>
- * 
- * @author Jeroen Roosen 
- * 
- */
-public class Clyde extends Ghost {
+import nl.tudelft.jpacman.sprite.Sprite; public class Clyde extends Ghost {
 
 	/**
 	 * The amount of cells Clyde wants to stay away from Pac Man.
@@ -74,9 +41,7 @@ public class Clyde extends Ghost {
 	 * @param spriteMap
 	 *            The sprites for this ghost.
 	 */
-	public Clyde(Map<Direction, Sprite> spriteMap) {
-		super(spriteMap, MOVE_INTERVAL, INTERVAL_VARIATION);
-	}
+	public Clyde(Map<Direction, Sprite> spriteMap) {super(spriteMap, MOVE_INTERVAL, INTERVAL_VARIATION);Collect.Hit("Clyde.java","Clyde(Map<Direction, Sprite> spriteMap)");Collect.Hit("Clyde.java","Clyde(Map<Direction, Sprite> spriteMap)", "|project://sqat-analysis/src/sqat/series2/A1b_DynCov.rsc|(4826,34)");}
 
 	/**
 	 * {@inheritDoc}
@@ -96,22 +61,15 @@ public class Clyde extends Ghost {
 	 * </p>
 	 */
 	@Override
-	public Direction nextMove() {
-		Square target = Navigation.findNearest(Player.class, getSquare())
-				.getSquare();
-		if (target == null) {
+	public Direction nextMove() {Collect.Hit("Clyde.java","nextMove()");Square target = Navigation.findNearest(Player.class, getSquare())
+				.getSquare(); Collect.Hit("Clyde.java","nextMove()", "|project://jpacman-framework/src/main/java/nl/tudelft/jpacman/npc/ghost/Clyde.java|(3376,84,<100,2>,<101,17>)"); if (target == null) {
 			return randomMove();
-		}
-
-		List<Direction> path = Navigation.shortestPath(getSquare(), target,
-				this);
-		if (path != null && !path.isEmpty()) {
+		} Collect.Hit("Clyde.java","nextMove()", "|project://jpacman-framework/src/main/java/nl/tudelft/jpacman/npc/ghost/Clyde.java|(3464,51,<102,2>,<104,3>)"); List<Direction> path = Navigation.shortestPath(getSquare(), target,
+				this); Collect.Hit("Clyde.java","nextMove()", "|project://jpacman-framework/src/main/java/nl/tudelft/jpacman/npc/ghost/Clyde.java|(3521,79,<106,2>,<107,10>)"); if (path != null && !path.isEmpty()) {
 			Direction d = path.get(0);
 			if (path.size() <= SHYNESS) {
 				return OPPOSITES.get(d);
 			}
 			return d;
-		}
-		return randomMove();
-	}
+		} Collect.Hit("Clyde.java","nextMove()", "|project://jpacman-framework/src/main/java/nl/tudelft/jpacman/npc/ghost/Clyde.java|(3604,158,<108,2>,<114,3>)"); return randomMove(); Collect.Hit("Clyde.java","nextMove()", "|project://jpacman-framework/src/main/java/nl/tudelft/jpacman/npc/ghost/Clyde.java|(3766,20,<115,2>,<115,22>)");}
 }

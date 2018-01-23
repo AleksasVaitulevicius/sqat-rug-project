@@ -64,8 +64,7 @@ public class PacManUI extends JFrame {
 	 * @param sf
 	 *            The formatter used to display the current score. 
 	 */
-	public PacManUI(final Game game, final Map<String, Action> buttons,
-			final Map<Integer, Action> keyMappings, ScoreFormatter sf) {
+	public PacManUI(final Game game, final Map<String, Action> buttons, final Map<Integer, Action> keyMappings, ScoreFormatter sf) {
 		super("JPac-Man");
 		assert game != null;
 		assert buttons != null;

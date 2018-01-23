@@ -1,11 +1,4 @@
-package nl.tudelft.jpacman.npc.ghost;
-
-/**
- * A list of supported ghost colors.
- * 
- * @author Jeroen Roosen 
- */
-public enum GhostColor {
+package nl.tudelft.jpacman.npc.ghost;import coverageApi.Collect; public enum GhostColor {
 
 	/**
 	 * Shadow, a.k.a. Blinky.

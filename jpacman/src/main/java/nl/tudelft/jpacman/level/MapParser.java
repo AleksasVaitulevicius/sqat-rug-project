@@ -75,8 +75,7 @@ public class MapParser {
 		return levelCreator.createLevel(board, ghosts, startPositions);
 	}
 
-	private void makeGrid(char[][] map, int width, int height,
-			Square[][] grid, List<NPC> ghosts, List<Square> startPositions) {
+	private void makeGrid(char[][] map, int width, int height, Square[][] grid, List<NPC> ghosts, List<Square> startPositions) {
 		for (int x = 0; x < width; x++) {
 			for (int y = 0; y < height; y++) {
 				char c = map[x][y];
@@ -85,8 +84,7 @@ public class MapParser {
 		}
 	}
 
-	private void addSquare(Square[][] grid, List<NPC> ghosts,
-			List<Square> startPositions, int x, int y, char c) {
+	private void addSquare(Square[][] grid, List<NPC> ghosts, List<Square> startPositions, int x, int y, char c) {
 		switch (c) {
 		case ' ':
 			grid[x][y] = boardCreator.createGround();

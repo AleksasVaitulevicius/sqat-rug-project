@@ -150,8 +150,7 @@ public class Launcher {
 	 * @param game
 	 *            The game that will process the events.
 	 */
-	protected void addSinglePlayerKeys(final PacManUiBuilder builder,
-			final Game game) {
+	protected void addSinglePlayerKeys(final PacManUiBuilder builder, final Game game) {
 		final Player p1 = getSinglePlayer(game);
 
 		builder.addKey(KeyEvent.VK_UP, new Action() {

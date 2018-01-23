@@ -38,8 +38,7 @@ public final class Navigation {
 	 *         such path could be found. When the destination is the current
 	 *         square, an empty list is returned.
 	 */
-	public static List<Direction> shortestPath(Square from, Square to,
-			Unit traveller) {
+	public static List<Direction> shortestPath(Square from, Square to, Unit traveller) {
 		if (from.equals(to)) {
 			return new ArrayList<>();
 		}
@@ -59,8 +58,7 @@ public final class Navigation {
 		return null;
 	}
 
-	private static void addNewTargets(Unit traveller, List<Node> targets,
-			Set<Square> visited, Node n, Square s) {
+	private static void addNewTargets(Unit traveller, List<Node> targets, Set<Square> visited, Node n, Square s) {
 		for (Direction d : Direction.values()) {
 			Square target = s.getSquareAt(d);
 			if (!visited.contains(target)
@@ -83,8 +81,7 @@ public final class Navigation {
 	 * @return The nearest unit of the given type, or <code>null</code> if no
 	 *         such unit could be found.
 	 */
-	public static Unit findNearest(Class<? extends Unit> type,
-			Square currentLocation) {
+	public static Unit findNearest(Class<? extends Unit> type,	Square currentLocation) {
 		List<Square> toDo = new ArrayList<>();
 		Set<Square> visited = new HashSet<>();
 

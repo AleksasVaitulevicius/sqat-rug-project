@@ -125,7 +125,7 @@ GC makeGraphPart(GC gc, rel[loc from, loc to] methodConnections, bool tes) {
    	       		}
    	     	}
    	  	}
-   	  	if(methodConnection.from.scheme == "java+class" ||  methodConnection.from.scheme == "java+interface" || methodConnection.from.scheme == "java+enum") {
+   	  	if(methodConnection.from.scheme == "java+class" ||  methodConnection.from.scheme == "java+interface") {
    	  		if(methodConnection.to.scheme == "java+method" || methodConnection.to.scheme == "java+constructor") {
    	  			if(methodConnection.to.path[0..4] == "/nl/") {
    	  				Node from = nod("class", methodConnection.from, tes);
@@ -159,7 +159,6 @@ rel [loc from, loc to] getTestConnections (M3 m3) {
     rel [loc from, loc to] containedTestMethods = rangeR(contained, tests.dec);
     rel [loc from, loc to] containedTestClasses = rangeR(contained, containedTestMethods.from);
     rel [loc from, loc to] containedCompilationUnits = rangeR(contained, containedTestClasses.from);
-    println(containedCompilationUnits);
     rel [loc from, loc to] containedTests = rangeR (domainR(contained, containedTestMethods.from + containedTestClasses.from + containedCompilationUnits.from),
     													containedTestMethods.to + containedTestClasses.to + containedCompilationUnits.to);
     testConnections = containedTests + domainR(m3.methodInvocation, containedTests.to);

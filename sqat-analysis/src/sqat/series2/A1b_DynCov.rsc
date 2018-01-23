@@ -44,7 +44,9 @@ Tips:
    [NT]"...", where NT represents the desired non-terminal (e.g. Expr, IntLiteral etc.).  
 
 */
+str method;
 
+str class;
 
 void methodCoverage(loc project) {
   // to be done
@@ -54,25 +56,61 @@ void lineCoverage(loc project) {
   // to be done
 }
 
-void insertMethod(loc l, str class, str method) {
-	l.authority = "jpacman-instrumented";
+str getMethodName(str m) {
+	m = replaceAll(m , "\t", "");
+	int parLeft = findFirst(m , "(");
+	int parRight = findLast(m, ")");
+	int lastSpace = findLast(m[..parLeft], " ");
+	return m[lastSpace+1..parRight+1];
 }
 
-void insertStatements(loc project, str class) {
-	tree = parseJava(project);
-	
-	visit(tree) {
-	   case theMethod:(MethodDec)`<MethodDecHead m> <MethodBody body>`: insertMethod(body@\loc, class, m); 
-
-	   
-	   //loc l = body
-	  // Block put(b:(Block)`{}`) = (Block) {<BlockStm s>}
+void insertAll(loc project) {
+	for(f <- files(project), f.extension == "java") {
+		insertStatements(f, f.file);
 	}
+}
+
+void insertStatements(loc project, str cl) {
+	class = cl;
+	tree = parseJava(project);
+	newTree = visit(tree) {
+		case (CompilationUnit) `<PackageDec? p> <ImportDec* i> <TypeDec* t>` : {
+			ImportDec d = [ImportDec] "import coverageApi.Collect;";
+			insert (CompilationUnit) `<PackageDec? p><ImportDec d ><ImportDec* i> <TypeDec* t>`;
+		}
+		
+		case (MethodDec)`<MethodDecHead m> {<BlockStm* stms>}` : {
+			method = getMethodName(unparse(m));
+	   		BlockStm statement = [BlockStm] "Collect.Hit(\"<class>\",\"<method>\");"; 
+	   		BlockStm* stms2 = putAfterEvery(stms, BlockStm (loc l) {   											
+	    										BlockStm statement = [BlockStm] "Collect.Hit(\"<class>\",\"<method>\", \"<l/*.begin.line*/>\");"; 
+	    										return statement;
+	    	});
+	   		MethodBody mb = [MethodBody] "{<statement><stms2>}";
+	   		insert (MethodDec)`<MethodDecHead m><MethodBody mb>`;
+	   	}
+	   	
+		case (ConstrDec) `<ConstrHead c>{<ConstrInv? co><BlockStm* stms>}` : {
+			method = getMethodName(unparse(c)); 
+			println(method);
+	   		BlockStm statement = [BlockStm] "Collect.Hit(\"<class>\",\"<method>\");"; 
+	   		BlockStm* stms2 = putAfterEvery(stms, BlockStm (loc l) {
+	    										BlockStm statement = [BlockStm] "Collect.Hit(\"<class>\",\"<method>\", \"<l/*.begin.line*/>\");"; 
+	    										return statement;
+	    	});
+	   		ConstrBody cb = [ConstrBody] "{<co><statement><stms2>}";
+	   		insert (ConstrDec)`<ConstrHead c><ConstrBody cb>`;
+	    }
+	}
+	str newClass = unparse(newTree);
+	project.authority = "jpacman-instrumented";
+	writeFile(project, newClass);
 }
 
 
 
 // Helper function to deal with concrete statement lists
+
 // second arg should be a closure taking a location (of the element)
 // and producing the BlockStm to-be-inserted 
 BlockStm* putAfterEvery(BlockStm* stms, BlockStm(loc) f) {
